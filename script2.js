@@ -1,4 +1,4 @@
-function startGame() {
+function start2PlayerGame() {
     document.getElementById("gameModal").style.display = "none"; // Hide modal
 
 
