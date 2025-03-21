@@ -65,9 +65,9 @@ document.addEventListener("keyup", event => keys[event.code] = false);
 
 
 //Draw player
-
+// Draw player 1
 let playerImage = new Image();
-playerImage.src = 'player-icon.png';  // Path to the player's icon image
+playerImage.src = 'characters/1.png';  // Path to the player's icon image
 
 // This variable ensures the image is only loaded once, preventing unnecessary reloading
 let imageLoaded = false;
@@ -77,21 +77,38 @@ playerImage.onload = () => {
     imageLoaded = true;
 };
 
-function drawPlayer(player) {
-    if (imageLoaded) {
-        // Draw a glowing circle around the player when invincible
-        if (player.isInvincible) {
+// Draw player 2
+let player2Image = new Image();
+player2Image.src = 'characters/2.png';  // Path to Player 2's icon image
+
+// This variable ensures the image is only loaded once, preventing unnecessary reloading
+let image2Loaded = false;
+
+// Ensure the image is loaded before drawing
+player2Image.onload = () => {
+    image2Loaded = true;
+};
+
+function drawPlayer(user) {
+    // Determine which image to use based on the user
+    let userImage = (user === player) ? playerImage : player2Image;
+    let userImageLoaded = (user === player) ? imageLoaded : image2Loaded;
+
+    // Check if the image is loaded
+    if (userImageLoaded) {
+        // Draw a glowing circle around the user when invincible
+        if (user.isInvincible) {
             ctx.shadowColor = "gold";  // Set the shadow color to gold for the glowing effect
             ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
             ctx.lineWidth = 5;         // Set the width of the circle's border
             ctx.beginPath();
-            ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width + 10, 0, Math.PI * 2); // Draw a circle around the player
+            ctx.arc(user.x + user.width / 2, user.y + user.height / 2, user.width + 10, 0, Math.PI * 2); // Draw a circle around the user
             ctx.stroke();  // Apply the stroke (outline)
             ctx.shadowBlur = 0; // Reset shadow blur to avoid affecting other objects
         }
 
-        // Draw the player image
-        ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+        // Draw the user image (player or player2)
+        ctx.drawImage(userImage, user.x, user.y, user.width, user.height);
     }
 }
 

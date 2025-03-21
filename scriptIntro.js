@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmSelectionButton = document.getElementById('confirmSelectionButton');
     const modalTitle = document.getElementById('modalTitle');
 
-    let player1Character = null;
+    let playerCharacter = null;
     let player2Character = null;
     let currentPlayer = 1; // To track which player is currently selecting
     let selectedImage = null; // To keep track of the currently selected image element for Player 1
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentPlayer === 1) {
             img.classList.add('selected-green');
             selectedImage = img; // Store reference to the selected image for Player 1
-            player1Character = character;
+            playerCharacter = character;
         } else if (currentPlayer === 2) {
             img.classList.add('selected-red');
             selectedImage2 = img; // Store reference to the selected image for Player 2
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle the confirm button click
     confirmSelectionButton.addEventListener('click', function() {
-        if (currentPlayer === 1 && player1Character) {
+        if (currentPlayer === 1 && playerCharacter) {
             currentPlayer = 2; // Move to Player 2
             modalTitle.textContent = 'Player 2, pick your character'; // Title for Player 2
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
