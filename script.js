@@ -23,6 +23,24 @@ let player = {
     invincibleTime: 0,   // Time remaining for invincibility
 };
 
+let player2 = {
+    x: 50,
+    y: 300,
+    width: 30,
+    height: 30,
+    velocityX: 0,
+    velocityY: 0,
+    speed: 3,
+    gravity: 0.5,
+    isJetpacking: false,
+    jetpackFuel: 100,
+    maxJetpackFuel: 100,
+    jetpackFuelDepletionRate: 0.5,
+    jetpackFuelRechargeRate: 0.1,
+    isInvincible: false, // Invincibility flag
+    invincibleTime: 0,   // Time remaining for invincibility
+};
+
 let platforms = [
     { x: 0, y: 350, width: 800, height: 50 },
 ];
@@ -31,7 +49,11 @@ let enemies = [];
 let coins = [];
 let monsters = [];
 let score = 0;
+let score2 = 0;
+
 let coinScore = 0;
+let coinScore2 = 0;
+
 let gameSpeed = 2;
 
 let invincibilityBoxes = []; // Array to hold invincibility boxes
@@ -55,30 +77,22 @@ playerImage.onload = () => {
     imageLoaded = true;
 };
 
-function drawPlayer() {
-if (imageLoaded) {
-// Draw a glowing circle around the player when invincible
-if (player.isInvincible) {
-    ctx.shadowColor = "gold";  // Set the shadow color to gold for the glowing effect
-    ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
-    ctx.lineWidth = 5;         // Set the width of the circle's border
-    ctx.beginPath();
-    ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width + 10, 0, Math.PI * 2); // Draw a circle around the player
-    ctx.stroke();  // Apply the stroke (outline)
-    ctx.shadowBlur = 0; // Re  // Apply blur to everything else on the canvas
-    ctx.strokeStyle = "gold";  // Set the stroke color to gold for invincibility
-    ctx.lineWidth = 5;         // Set the width of the circle's border
-    ctx.beginPath();
-    ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width, 0, Math.PI * 2); // Draw a circle around the player
-    ctx.stroke();  // Apply the stroke (outline)
-}
+function drawPlayer(player) {
+    if (imageLoaded) {
+        // Draw a glowing circle around the player when invincible
+        if (player.isInvincible) {
+            ctx.shadowColor = "gold";  // Set the shadow color to gold for the glowing effect
+            ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
+            ctx.lineWidth = 5;         // Set the width of the circle's border
+            ctx.beginPath();
+            ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width + 10, 0, Math.PI * 2); // Draw a circle around the player
+            ctx.stroke();  // Apply the stroke (outline)
+            ctx.shadowBlur = 0; // Reset shadow blur to avoid affecting other objects
+        }
 
-// Draw the player image or the player rectangle
-ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
-} 
-else {
-
-}
+        // Draw the player image
+        ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+    }
 }
 
 
@@ -169,55 +183,105 @@ if (player.isInvincible) {
     ctx.fillText("Invincible Time: " + invincibleSeconds, 10, 60); // Display the time at the top left
 }
 }
-
 function drawJetpackFuel() {
     ctx.fillStyle = "blue";
     ctx.fillRect(10, 80, player.jetpackFuel, 10);
 }
 
 
-function updatePlayer() {
-    if (keys["ArrowLeft"]) player.velocityX = -player.speed;
-    else if (keys["ArrowRight"]) player.velocityX = player.speed;
-    else player.velocityX = 0;
+function drawScore2() {
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText("Score: " + score2, 150, 20);
+}
+function drawCoinScore2() {
+    ctx.fillStyle = "red";
+    ctx.font = "20px Arial";
+    ctx.fillText("Coins: " + coinScore2, 150, 40);
+}
+function drawInvincibilityTime2() {
+if (player.isInvincible) {
+    const invincibleSeconds = Math.floor(player.invincibleTime2 / 30); // Convert frames to seconds
+    ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
+    ctx.font = "20px Arial";
+    ctx.fillText("Invincible Time: " + invincibleSeconds, 10, 60); // Display the time at the top left
+}
+}
+function drawJetpackFuel2() {
+    ctx.fillStyle = "blue";
+    ctx.fillRect(10, 80, player.jetpackFuel2, 10);
+}
 
-    if (keys["ArrowUp"] && player.jetpackFuel > 0) {
-        player.isJetpacking = true;
-        player.velocityY = -5;
-        player.jetpackFuel -= player.jetpackFuelDepletionRate;
-    } else {
-        player.isJetpacking = false;
-        if (player.y + player.height < canvas.height) {
-            player.velocityY += player.gravity;
+
+function updatePlayer(user, keys) {
+    // Player 1 controls (Arrow keys)
+    if (user === player) {
+        // Player 1 movement (Arrow keys)
+        if (keys["ArrowLeft"]) user.velocityX = -user.speed;
+        else if (keys["ArrowRight"]) user.velocityX = user.speed;
+        else user.velocityX = 0;
+
+        if (keys["ArrowUp"] && user.jetpackFuel > 0) {
+            user.isJetpacking = true;
+            user.velocityY = -5;
+            user.jetpackFuel -= user.jetpackFuelDepletionRate;
+        } else {
+            user.isJetpacking = false;
+            if (user.y + user.height < canvas.height) {
+                user.velocityY += user.gravity;
+            }
+        }
+
+    } 
+    // Player 2 controls (W, A, S, D keys)
+    else if (user = player2) {
+        // Player 2 movement (WASD keys)
+        if (keys["KeyA"]) user.velocityX = -user.speed;  // A - Move left
+        else if (keys["KeyD"]) user.velocityX = user.speed;  // D - Move right
+        else user.velocityX = 0;
+
+        if (keys["KeyW"] && user.jetpackFuel > 0) {  // W - Jetpack Up
+            user.isJetpacking = true;
+            user.velocityY = -5;
+            user.jetpackFuel -= user.jetpackFuelDepletionRate;
+        } else {
+            user.isJetpacking = false;
+            if (user.y + user.height < canvas.height) {
+                user.velocityY += user.gravity;
+            }
         }
     }
 
-    if (!player.isJetpacking && player.jetpackFuel < player.maxJetpackFuel) {
-        player.jetpackFuel += player.jetpackFuelRechargeRate;
+    // Recharge jetpack if not using it
+    if (!user.isJetpacking && user.jetpackFuel < user.maxJetpackFuel) {
+        user.jetpackFuel += user.jetpackFuelRechargeRate;
     }
 
-    player.x += player.velocityX;
-    player.y += player.velocityY;
+    // Update position based on velocity
+    user.x += user.velocityX;
+    user.y += user.velocityY;
 
+    // Platform collision detection
     platforms.forEach(platform => {
         if (
-            player.x < platform.x + platform.width &&
-            player.x + player.width > platform.x &&
-            player.y + player.height > platform.y &&
-            player.y + player.height - player.velocityY <= platform.y
+            user.x < platform.x + platform.width &&
+            user.x + user.width > platform.x &&
+            user.y + user.height > platform.y &&
+            user.y + user.height - user.velocityY <= platform.y
         ) {
-            player.y = platform.y - player.height;
-            player.velocityY = 0;
-            player.isJetpacking = false;
+            user.y = platform.y - user.height;
+            user.velocityY = 0;
+            user.isJetpacking = false;
         }
     });
 }
 
-function updateInvincibility() {
-    if (player.isInvincible) {
-        player.invincibleTime -= 1;
-        if (player.invincibleTime <= 0) {
-            player.isInvincible = false; // End invincibility
+
+function updateInvincibility(user) {
+    if (user.isInvincible) {
+        user.invincibleTime -= 1;
+        if (user.invincibleTime <= 0) {
+            user.isInvincible = false; // End invincibility
         }
     }
 }
@@ -237,25 +301,25 @@ function updateInvincibilityBoxes() {
     invincibilityBoxes = invincibilityBoxes.filter(box => box.x + box.width > 0);
 }
 
-function checkCollisions() {
+function checkCollisions(user) {
     // Collision with enemies
     enemies.forEach(enemy => {
-        if (!player.isInvincible && // Only trigger collision if not invincible
-            player.x < enemy.x + enemy.width &&
-            player.x + player.width > enemy.x &&
-            player.y < enemy.y + enemy.height &&
-            player.y + player.height > enemy.y
+        if (!user.isInvincible && // Only trigger collision if not invincible
+            user.x < enemy.x + enemy.width &&
+            user.x + user.width > enemy.x &&
+            user.y < enemy.y + enemy.height &&
+            user.y + user.height > enemy.y
         ) {
             location.reload();  // Restart the game on collision with enemy
         }
     })
     // Collision with enemies
     monsters.forEach(monster => {
-        if (!player.isInvincible && // Only trigger collision if not invincible
-            player.x < monster.x + monster.width &&
-            player.x + player.width > monster.x &&
-            player.y < monster.y + monster.height &&
-            player.y + player.height > monster.y
+        if (!user.isInvincible && // Only trigger collision if not invincible
+            user.x < monster.x + monster.width &&
+            user.x + user.width > monster.x &&
+            user.y < monster.y + monster.height &&
+            user.y + user.height > monster.y
         ) {
             location.reload();  // Restart the game on collision with enemy
         }
@@ -267,33 +331,40 @@ function checkCollisions() {
 
     // Collision with invincibility box
     invincibilityBoxes.forEach(box => {
-        if (player.x < box.x + box.width &&
-            player.x + player.width > box.x &&
-            player.y < box.y + box.height &&
-            player.y + player.height > box.y) {
-            player.isInvincible = true;
-            player.invincibleTime = 300; // 10 seconds (30 frames per second)
+        if (user.x < box.x + box.width &&
+            user.x + user.width > box.x &&
+            user.y < box.y + box.height &&
+            user.y + user.height > box.y) {
+            user.isInvincible = true;
+            user.invincibleTime = 300; // 10 seconds (30 frames per second)
             invincibilityBoxes = invincibilityBoxes.filter(b => b !== box); // Remove the box
         }
     });
 
                 // Collision with invincibility box
     coins.forEach(coin => {
-        if (player.x < coin.x + coin.width &&
-            player.x + player.width > coin.x &&
-            player.y < coin.y + coin.height &&
-            player.y + player.height > coin.y) {
+        if (user.x < coin.x + coin.width &&
+            user.x + user.width > coin.x &&
+            user.y < coin.y + coin.height &&
+            user.y + user.height > coin.y) {
+            if (user == player) {
             coinScore = coinScore+1
+            }
+            else if (user == player2) {
+                coinScore2 = coinScore2+1
+
+            }
+
             coins = coins.filter(c => c !== coin); // Remove the box
 
 
         }
     });
     monsters.forEach(monster => {
-        if (player.x < monster.x + monster.width &&
-            player.x + player.width > monster.x &&
-            player.y < monster.y + monster.height &&
-            player.y + player.height > monster.y) {
+        if (user.x < monster.x + monster.width &&
+            user.x + user.width > monster.x &&
+            user.y < monster.y + monster.height &&
+            user.y + user.height > monster.y) {
             monsters = monsters.filter(m => m !== monster); // Remove the box
 
 
@@ -362,6 +433,7 @@ monsters = monsters.filter(monster => monster.x + monster.width > 0);
 
 function updateScore() {
     score += 1;
+    score2 +=1;
     if (score % 500 === 0) gameSpeed += 0.5;
 }
 
@@ -380,20 +452,33 @@ function gameLoop() {
     drawEnemies();
     drawCoins();
     drawMonsters();
+
     drawScore();
+    drawScore2
+
     drawInvincibilityTime()
+
     drawJetpackFuel();
+
     drawInvincibilityBoxes();
-    updatePlayer();
-    updateInvincibility();
+    updatePlayer(player, keys);
+
+
+    updateInvincibility(player);
+
     updateEnemies();
     updateCoins();
     updateMonsters();
+
     drawCoinScore();
+
+
     updateInvincibilityBoxes();
     updateScore();
-    checkCollisions();
-    drawPlayer();
+    checkCollisions(player);
+
+    drawPlayer(player);
+
 
 
     requestAnimationFrame(gameLoop);

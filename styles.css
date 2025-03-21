@@ -34,3 +34,71 @@ button {
     font-size: 18px;
     cursor: pointer;
 }
+
+/* General styling for the modals */
+#gameModal, #characterSelectionModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 60%;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Style the character selection grid */
+#characterGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.characterChoice {
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.characterChoice:hover {
+    transform: scale(1.1);
+}
+
+/* Style for the canvas */
+#gameCanvas {
+    margin-top: 20px;
+    border: 1px solid #000;
+}
+
+
+
+/* Green border for Player 1 */
+.characterChoice.selected-green {
+    border: 3px solid green; /* Adds a green border around Player 1's selected character */
+    box-shadow: 0 0 10px green; /* Optional: adds a glowing effect */
+}
+
+/* Red border for Player 2 */
+.characterChoice.selected-red {
+    border: 3px solid red; /* Adds a red border around Player 2's selected character */
+    box-shadow: 0 0 10px red; /* Optional: adds a glowing effect */
+}

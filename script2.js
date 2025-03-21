@@ -261,6 +261,9 @@ function updatePlayer(user, keys) {
     user.x += user.velocityX;
     user.y += user.velocityY;
 
+
+
+
     // Platform collision detection
     platforms.forEach(platform => {
         if (
