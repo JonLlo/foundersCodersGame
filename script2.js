@@ -373,6 +373,8 @@ function checkCollisions(user) {
 
 
             // Update modal title to show the winner
+            alert(winnerImageSrc)
+
             document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
             document.getElementById("winnerImage").src = winnerImageSrc;
 
