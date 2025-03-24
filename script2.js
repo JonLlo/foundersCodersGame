@@ -1,5 +1,10 @@
+let gameRunning = true; // Global flag to control the game loop
 function start2PlayerGame(p1, p2) {
     document.getElementById("gameModal").style.display = "none"; // Hide modal
+    document.getElementById("resultsModal").style.display = "none"; // Hide modal
+    let gameRunning = true; // Global flag to control the game loop
+
+
 
 
 const canvas = document.getElementById("gameCanvas");
@@ -75,6 +80,7 @@ let imageLoaded = false;
 // Ensure the image is loaded before drawing
 playerImage.onload = () => {
     imageLoaded = true;
+
 };
 
 // Draw player 2
@@ -187,6 +193,19 @@ function drawScore() {
     ctx.font = "20px Arial";
     ctx.fillText("Score: " + score, 10, 20);
 }
+function drawLives() {
+    ctx.fillStyle = "Purple";
+    ctx.font = "20px Arial";
+    ctx.fillText("Lives: " + coinScore, 150, 60);
+}
+function drawplayerImage() {
+    ctx.drawImage(playerImage, 40, 50, 40, 40);
+
+}
+function drawplayer2Image() {
+    ctx.drawImage(player2Image, 170, 50, 40, 40);
+
+}
 function drawCoinScore() {
     ctx.fillStyle = "red";
     ctx.font = "20px Arial";
@@ -210,6 +229,11 @@ function drawScore2() {
     ctx.fillStyle = "black";
     ctx.font = "20px Arial";
     ctx.fillText("Score: " + score2, 150, 20);
+}
+function drawLives2() {
+    ctx.fillStyle = "Purple";
+    ctx.font = "20px Arial";
+    ctx.fillText("Lives: " + coinScore2, 220, 60);
 }
 function drawCoinScore2() {
     ctx.fillStyle = "red";
@@ -307,7 +331,7 @@ function updateInvincibility(user) {
 }
 
 function updateInvincibilityBoxes() {
-    if (Math.random() < 0.01) { // Chance to spawn invincibility box
+    if (Math.random() < 0.005) { // Chance to spawn invincibility box
         let newBox = {
             x: canvas.width,
             y: Math.random() * (canvas.height - 60),
@@ -322,6 +346,7 @@ function updateInvincibilityBoxes() {
 }
 
 function checkCollisions(user) {
+
     // Collision with enemies
     enemies.forEach(enemy => {
         if (!user.isInvincible && // Only trigger collision if not invincible
@@ -329,8 +354,36 @@ function checkCollisions(user) {
             user.x + user.width > enemy.x &&
             user.y < enemy.y + enemy.height &&
             user.y + user.height > enemy.y
-        ) {
-            location.reload();  // Restart the game on collision with enemy
+        ) { 
+            console.log('Enemy Collision')
+            gameRunning = false;
+
+            // Determine which player lost
+            let winningPlayer, winnerImageSrc;
+
+            if (user === player) {
+                let imgUrl2 = new URL(player2Image.src);
+                winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                winningPlayer = "Player 2";
+            } else {
+                let imgUrl = new URL(playerImage.src);
+                winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                winningPlayer = "Player 1";
+            }
+
+
+            // Update modal title to show the winner
+            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
+            document.getElementById("winnerImage").src = winnerImageSrc;
+
+
+            // Update scores
+            document.getElementById("scores").textContent = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2}`;
+
+            // Show the results modal
+            document.getElementById("resultsModal").style.display = "block";
+            //location.reload();  // Restart the game on collision with enemy
+           
         }
     })
     // Collision with enemies
@@ -341,8 +394,24 @@ function checkCollisions(user) {
             user.y < monster.y + monster.height &&
             user.y + user.height > monster.y
         ) {
-            location.reload();  // Restart the game on collision with enemy
-        }
+            console.log('Monster Collision')
+
+            gameRunning = false;
+
+            // Determine which player lost
+            let winningPlayer = (user === player) ? "Player 2" : "Player 1";
+
+            // Update modal title to show the winner
+            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`
+
+            // Update scores
+            document.getElementById("scores").textContent = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2}`;
+
+            // Show the results modal
+            document.getElementById("resultsModal").style.display = "block";
+            
+            //location.reload();  // Restart the game on collision with enemy
+                   }
     }
     
     
@@ -436,7 +505,7 @@ if (monster.y + monster.height > canvas.height) monster.y = canvas.height - mons
 });
 monsters = monsters.filter(monster => monster.x + monster.width > 0);
 
-    if (Math.random() < 0.03) {
+    if (Math.random() < 0.01) {
         let newMonster = {
             x: canvas.width,
             y: Math.random() * (canvas.height - 30),
@@ -467,6 +536,7 @@ function updateScore() {
 
 
 function gameLoop() {
+    if (gameRunning) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPlatforms();
     drawEnemies();
@@ -479,8 +549,8 @@ function gameLoop() {
     drawInvincibilityTime()
     drawInvincibilityTime2()
 
-    drawJetpackFuel();
-    drawJetpackFuel2();
+    //drawJetpackFuel();
+    //drawJetpackFuel2();
 
     drawInvincibilityBoxes();
     updatePlayer(player, keys);
@@ -493,7 +563,8 @@ function gameLoop() {
     updateEnemies();
     updateCoins();
     updateMonsters();
-
+    drawLives();
+    drawLives2();
     drawCoinScore();
     drawCoinScore2();
 
@@ -505,10 +576,12 @@ function gameLoop() {
 
     drawPlayer(player);
     drawPlayer(player2);
+    drawplayerImage(player);
+    drawplayer2Image(player2);
 
 
 
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop);}
 }
 
 gameLoop();

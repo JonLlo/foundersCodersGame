@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const characterGrid = document.getElementById('characterGrid');
     const confirmSelectionButton = document.getElementById('confirmSelectionButton');
     const modalTitle = document.getElementById('modalTitle');
+    const resultsModalReplay = document.getElementById('playAgain');
+    const resultsModalDiffChar = document.getElementById('playDiffChar');
+
 
     let playerCharacter = null;
     let player2Character = null;
@@ -76,6 +79,16 @@ document.addEventListener('DOMContentLoaded', function() {
         currentPlayer = 1; // Set to Player 1
         confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
     });
+
+
+    resultsModalReplay.addEventListener('click', function() {
+        start2PlayerGame(playerCharacter, player2Character); // Start the game
+
+    });
+    resultsModalDiffChar.addEventListener('click', function() {
+    location.reload()
+    });
+
 
 
 });

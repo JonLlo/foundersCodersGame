@@ -10,7 +10,7 @@ canvas {
 }
 
 
-#gameModal {
+#gameModal, #resultsModal, #characterSelectionModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -36,7 +36,7 @@ button {
 }
 
 /* General styling for the modals */
-#gameModal, #characterSelectionModal {
+#gameModal, #characterSelectionModal, #resultsModal {
     position: fixed;
     top: 0;
     left: 0;
