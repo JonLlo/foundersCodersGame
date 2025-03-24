@@ -1,4 +1,4 @@
-function start2PlayerGame() {
+function start2PlayerGame(p1, p2) {
     document.getElementById("gameModal").style.display = "none"; // Hide modal
 
 
@@ -67,7 +67,7 @@ document.addEventListener("keyup", event => keys[event.code] = false);
 //Draw player
 // Draw player 1
 let playerImage = new Image();
-playerImage.src = 'characters/1.png';  // Path to the player's icon image
+playerImage.src = p1;  // Path to the player's icon image
 
 // This variable ensures the image is only loaded once, preventing unnecessary reloading
 let imageLoaded = false;
@@ -79,7 +79,7 @@ playerImage.onload = () => {
 
 // Draw player 2
 let player2Image = new Image();
-player2Image.src = 'characters/2.png';  // Path to Player 2's icon image
+player2Image.src = p2;  // Path to Player 2's icon image
 
 // This variable ensures the image is only loaded once, preventing unnecessary reloading
 let image2Loaded = false;
