@@ -1,5 +1,5 @@
 let gameRunning = true; // Global flag to control the game loop
-const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
+const coinSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 coinSound.volume = 0.5; // Default volume (can be adjusted)
 const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
 slashSound.volume = 0.5; // Default volume (can be adjusted)
