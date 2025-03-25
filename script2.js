@@ -2,24 +2,14 @@ let gameRunning = true; // Global flag to control the game loop
 let isPaused = false; // Track game state
 
 function start2PlayerGame(p1, p2) {
-    const backgroundMusic = new Audio(); // Replace with your file
-    backgroundMusic.src = "sound/1.mp3"
-    backgroundMusic.loop = true; // Makes it play continuously
-    backgroundMusic.volume = 0.5; // Adjust volume (0.0 to 1.0)
-    backgroundMusic.play();
+
+
     document.getElementById("gameModal").style.display = "none"; // Hide modal
     document.getElementById("resultsModal").style.display = "none"; // Hide modal
     let gameRunning = true; // Global flag to control the game loop
-    const volumeSlider = document.getElementById('volumeSlider');
 
     // Set initial volume
-    backgroundMusic.volume = volumeSlider.value;
 
-    // Listen for input change on the slider
-    volumeSlider.addEventListener('input', function() {
-        // Update the audio volume based on the slider value
-   backgroundMusic.volume = volumeSlider.value;
-});
 
 
 
@@ -567,7 +557,7 @@ function checkCollisions(user) {
                 // Collision with invincibility box
 
     const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
-    coinSound.volume = volumeSlider.value; // Default volume (can be adjusted)
+    coinSound.volume = 0.5; // Default volume (can be adjusted)
     coins.forEach(coin => {
         if (user.x < coin.x + coin.width &&
             user.x + user.width > coin.x &&
