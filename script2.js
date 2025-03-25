@@ -415,6 +415,9 @@ function checkCollisions(user) {
 
         lifeLostImage.src = ImageSrc; // Set the correct image path
         lifeLostContainer.style.display = "block"; // Show message and image
+
+
+
         // Hide the message after 2 seconds
         setTimeout(() => {
             lifeLostContainer.style.display = "none";
@@ -562,6 +565,9 @@ function checkCollisions(user) {
     });
 
                 // Collision with invincibility box
+
+    const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
+    coinSound.volume = volumeSlider.value; // Default volume (can be adjusted)
     coins.forEach(coin => {
         if (user.x < coin.x + coin.width &&
             user.x + user.width > coin.x &&
@@ -574,6 +580,9 @@ function checkCollisions(user) {
                 coinScore2 = coinScore2+1
 
             }
+                  // Play the coin sound
+            coinSound.currentTime = 0; // Restart sound so it plays every time
+            coinSound.play();
 
             coins = coins.filter(c => c !== coin); // Remove the box
 
