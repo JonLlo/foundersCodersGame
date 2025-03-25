@@ -26,6 +26,8 @@ let player = {
     jetpackFuelRechargeRate: 0.1,
     isInvincible: false, // Invincibility flag
     invincibleTime: 0,   // Time remaining for invincibility
+    lives: 3,
+    
 };
 
 let player2 = {
@@ -44,7 +46,11 @@ let player2 = {
     jetpackFuelRechargeRate: 0.1,
     isInvincible: false, // Invincibility flag
     invincibleTime: 0,   // Time remaining for invincibility
+    lives: 3,
+
 };
+
+
 
 let platforms = [
     { x: 0, y: 350, width: 800, height: 50 },
@@ -196,14 +202,14 @@ function drawScore() {
 function drawLives() {
     ctx.fillStyle = "Purple";
     ctx.font = "20px Arial";
-    ctx.fillText("Lives: " + coinScore, 150, 60);
+    ctx.fillText("Lives: " + player.lives, 10, 60);
 }
 function drawplayerImage() {
-    ctx.drawImage(playerImage, 40, 50, 40, 40);
+    ctx.drawImage(playerImage, 30, 70, 40, 40);
 
 }
 function drawplayer2Image() {
-    ctx.drawImage(player2Image, 170, 50, 40, 40);
+    ctx.drawImage(player2Image, 160, 70, 40, 40);
 
 }
 function drawCoinScore() {
@@ -233,7 +239,7 @@ function drawScore2() {
 function drawLives2() {
     ctx.fillStyle = "Purple";
     ctx.font = "20px Arial";
-    ctx.fillText("Lives: " + coinScore2, 220, 60);
+    ctx.fillText("Lives: " + player2.lives, 150, 60);
 }
 function drawCoinScore2() {
     ctx.fillStyle = "red";
@@ -347,14 +353,32 @@ function updateInvincibilityBoxes() {
 
 function checkCollisions(user) {
 
+
+
+
     // Collision with enemies
     enemies.forEach(enemy => {
+
+     
+
+
         if (!user.isInvincible && // Only trigger collision if not invincible
             user.x < enemy.x + enemy.width &&
             user.x + user.width > enemy.x &&
             user.y < enemy.y + enemy.height &&
             user.y + user.height > enemy.y
         ) { 
+
+
+
+    if (user.lives > 1) {
+        user.lives--; // Reduce life count
+        return;
+
+
+    } else {
+
+
             console.log('Enemy Collision')
             gameRunning = false;
 
@@ -386,7 +410,7 @@ function checkCollisions(user) {
             document.getElementById("resultsModal").style.display = "block";
             //location.reload();  // Restart the game on collision with enemy
            
-        }
+        }}
     })
     // Collision with enemies
     monsters.forEach(monster => {
@@ -398,6 +422,12 @@ function checkCollisions(user) {
         ) {
             console.log('Monster Collision')
 
+            if (user.lives > 1) {
+                user.lives--; 
+                return;
+
+        
+            } else {
             gameRunning = false;
 
             // Determine which player lost
@@ -425,13 +455,17 @@ function checkCollisions(user) {
             document.getElementById("resultsModal").style.display = "block";
             
             //location.reload();  // Restart the game on collision with enemy
-                   }
+                   }}
     }
     
     
     
     );
 
+
+
+
+   
     // Collision with invincibility box
     invincibilityBoxes.forEach(box => {
         if (user.x < box.x + box.width &&
