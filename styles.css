@@ -1,6 +1,8 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
+    overflow: hidden;  /* Disables both vertical and horizontal scrolling */
+
 }
 
 /* Style for the canvas */
@@ -63,11 +65,20 @@ body {
     z-index: 9999;  /* Ensure it's above the parent container */
     width: 400px;  /* Fixed width */
     height: 200px; /* Fixed height */
-    
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+    transform: translate(-50%, -90%); /* This centers the modal within the parent container */
+
+
+}
+#confirmSelectionButton {
+    align-self: center; 
+    align-content: center;  
+    justify-content: center;
+    transform: translateX(138px);
+    align-items: center;        /* Center the button horizontally */
+
 
 }
 .modal-content {

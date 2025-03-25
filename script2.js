@@ -456,7 +456,7 @@ function checkCollisions(user) {
 
             if (user.lives > 1) {
                 if (user == player) {
-                    let imgUrl = new URL(player2Image.src);
+                    let imgUrl = new URL(playerImage.src);
                     ImageSrc = imgUrl.pathname;
 
                 
