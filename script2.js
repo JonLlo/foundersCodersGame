@@ -373,7 +373,7 @@ function checkCollisions(user) {
 
 
             // Update modal title to show the winner
-            alert(winnerImageSrc)
+            console.log(winnerImageSrc)
 
             document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
             document.getElementById("winnerImage").src = winnerImageSrc;
@@ -401,11 +401,23 @@ function checkCollisions(user) {
             gameRunning = false;
 
             // Determine which player lost
-            let winningPlayer = (user === player) ? "Player 2" : "Player 1";
+                        // Determine which player lost
+                        let winningPlayer, winnerImageSrc;
+
+                        if (user === player) {
+                            let imgUrl2 = new URL(player2Image.src);
+                            winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                            winningPlayer = "Player 2";
+                        } else {
+                            let imgUrl = new URL(playerImage.src);
+                            winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                            winningPlayer = "Player 1";
+                        }
+            console.log(winnerImageSrc)
 
             // Update modal title to show the winner
-            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`
-
+            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
+            document.getElementById("winnerImage").src = winnerImageSrc;
             // Update scores
             document.getElementById("scores").textContent = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2}`;
 
