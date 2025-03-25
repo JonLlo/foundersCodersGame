@@ -7,6 +7,8 @@ const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sou
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2) {
     let isPaused = false; // Track game state
+    const music = document.getElementById("backgroundMusic");
+    music.play();  // Starts the music
 
 
 
@@ -16,6 +18,24 @@ function start2PlayerGame(p1, p2) {
 
     // Set initial volume
 
+// Toggle sound (mute/unmute)
+function toggleSound() {
+    const music = document.getElementById("backgroundMusic");
+    const soundIcon = document.getElementById("soundIcon");
+
+    if (music.paused || music.muted) {
+        music.play();  // Unmute and play
+        soundIcon.classList.remove("muted");
+        soundIcon.classList.add("unmuted");
+        soundIcon.innerHTML = '&#x1F50A;'; // Speaker icon (sound on)
+    } else {
+        music.pause();  // Pause the music (mute)
+        soundIcon.classList.remove("unmuted");
+        soundIcon.classList.add("muted");
+        soundIcon.innerHTML = '&#x1F507;'; // Muted speaker icon
+    }
+}
+document.getElementById("soundIcon").addEventListener("click", toggleSound);
 
 
 

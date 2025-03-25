@@ -258,3 +258,21 @@ button {
     100% { opacity: 0; transform: translate(-50%, -45%); }
 }
 
+
+        /* Position the sound icon in the top left corner */
+        #soundIcon {
+            position: absolute;
+            top: 20px;
+            left: 750px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1000;  /* Ensure the icon is above other elements */
+        }
+
+        /* Optionally, style for muted and unmuted icons */
+        .muted {
+            color: #777; /* Gray for muted state */
+        }
+        .unmuted {
+            color: #000; /* Black for unmuted state */
+        }
