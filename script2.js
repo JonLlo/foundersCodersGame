@@ -1,5 +1,4 @@
 let gameRunning = true; // Global flag to control the game loop
-let isPaused = false; // Track game state
 const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
 coinSound.volume = 0.5; // Default volume (can be adjusted)
 const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
@@ -7,6 +6,8 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2) {
+    let isPaused = false; // Track game state
+
 
 
     document.getElementById("gameModal").style.display = "none"; // Hide modal
@@ -19,7 +20,6 @@ function start2PlayerGame(p1, p2) {
 
 
 
-const pauseModal = document.getElementById('pauseModal');
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -123,8 +123,8 @@ function drawPlayer(user) {
     if (userImageLoaded) {
         // Draw a glowing circle around the user when invincible
         if (user.isInvincible) {
-            ctx.strokeStyle = "gold";  // Set the stroke color to gold
-            ctx.shadowColor = "gold";  // Set the shadow color to gold for the glowing effect
+            ctx.strokeStyle = "goldenrod";  // Set the stroke color to gold
+            ctx.shadowColor = "goldenrod";  // Set the shadow color to gold for the glowing effect
             ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
             ctx.lineWidth = 5;         // Set the width of the circle's border
             ctx.beginPath();
@@ -266,7 +266,7 @@ if (player2.isInvincible) {
     const invincibleSeconds = Math.floor(player2.invincibleTime / 30); // Convert frames to seconds
     ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
     ctx.font = "20px Arial";
-    ctx.fillText("Invincible Time: " + invincibleSeconds, 150, 90); // Display the time at the top left
+    ctx.fillText("" + invincibleSeconds, 150, 90); // Display the time at the top left
 }
 }
 function drawJetpackFuel2() {
@@ -556,9 +556,42 @@ function checkCollisions(user) {
             user.x + user.width > box.x &&
             user.y < box.y + box.height &&
             user.y + user.height > box.y && !user.isInvincible ) {
+
+                if (user == player) {
+
+                    let imgUrl = new URL(playerImage.src);
+                    ImageSrc = imgUrl.pathname;
+        
+                }
+                else {
+                    let imgUrl2 = new URL(player2Image.src);
+                    ImageSrc = imgUrl2.pathname;
+                }
+
+
+        
+
+        // Show "Life Lost!" message and image
+        let invincibleContainer = document.getElementById("invincibleContainer");
+        let invincibleImage = document.getElementById("invincibleImage");
+
+        invincibleImage.src = ImageSrc; // Set the correct image path
+        invincibleContainer.style.display = "block"; // Show message and image
+
+
+        // Hide the message after 2 seconds
+        setTimeout(() => {
+            invincibleContainer.style.display = "none";
+        }, 1000);
+
+
+
+                
             user.isInvincible = true;
             shieldSound.currentTime = 0; // Restart sound so it plays every time
             shieldSound.play();
+
+
     
             user.invincibleTime = 300; // 10 seconds (30 frames per second)
             invincibilityBoxes = invincibilityBoxes.filter(b => b !== box); // Remove the box
@@ -695,6 +728,10 @@ function togglePause(event) {
     document.getElementById("mainMenuButton").addEventListener("click", () => {
     window.location.href = "index.html"; 
 });
+
+
+
+ 
     document.addEventListener("keydown", togglePause);
 
 

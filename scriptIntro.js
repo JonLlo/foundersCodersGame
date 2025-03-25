@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const twoPlayersButton = document.getElementById('twoPlayersButton');
     const characterSelectionModal = document.getElementById('characterSelectionModal');
     const gameModal = document.getElementById('gameModal');
+    const restart = document.getElementById('restartButton');
+    const pause = document.getElementById('pauseModal')
 
 
     const characterGrid = document.getElementById('characterGrid');
@@ -88,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
     });
 
+
+  
 
     resultsModalReplay.addEventListener('click', function() {
         start2PlayerGame(playerCharacter, player2Character); // Start the game

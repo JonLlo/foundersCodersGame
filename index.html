@@ -10,7 +10,7 @@
 <body>
 
     <h1>Monster Bosh</h1>
-    <!--    <div id="InvincibleContainer">
+    <!--  div id="InvincibleContainer">
         <div id="lifeLostMessage">Invincible</div>
         <img id="InvincibleImage" src="" alt="Invincible Icon">
     </div>
@@ -26,6 +26,15 @@
             <h2>Select Game Mode</h2>
             <button id="onePlayerButton">1 Player</button>
             <button id="twoPlayersButton">2 Players</button>
+        </div>
+    </div>
+    <div id="themeModal" style="display: none;">
+        <div class="modal-content">
+            <h2>Select Game Mode</h2>
+            <button id="normalButton">Normal</button>
+            <button id="seaButton">Sea</button>
+            <button id="westernButton">Western</button>
+            <button id="footballButton">Football</button>
         </div>
     </div>
 
@@ -51,14 +60,19 @@
         <div class="modal-content">
             <h2>Game Paused</h2>
             <button id="resumeButton">Resume</button>
+            <button id="restartButton">Restart</button>
             <button id="mainMenuButton">Main Menu</button>
     
         </div>
     </div>
 
-    <div id="lifeLostContainer">
+    <div id="lifeLostContainer" style="display: none;">
         <div id="lifeLostMessage">Life Lost!</div>
         <img id="lifeLostImage" src="" alt="Life Lost Icon">
+    </div>
+    <div id="invincibleContainer" style="display: none;">
+        <div id="invincibleMessage">Invincibility</div>
+        <img id="invincibleImage" src="" alt="invincible Icon">
     </div>
 
 </Container>

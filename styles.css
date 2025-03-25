@@ -209,7 +209,7 @@ button {
     font-size: 3rem;
     font-weight: bold;
     color: red;
-    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8);
+    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8); 
     font-family: 'Arial Black', sans-serif;
     margin-bottom: 10px;
 }
@@ -219,6 +219,37 @@ button {
     height: auto;
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
 }
+#invincibleContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none; /* Hidden by default */
+    animation: fadeInOut 2s ease-in-out;
+}
+
+#invincibleMessage {
+    font-size: 3rem;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 2px 2px 10px, black;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 10px;
+}
+
+#invincibleImage {
+    width: 100px; /* Adjust size */
+    height: auto;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+
+
+
+
+
+
 
 @keyframes fadeInOut {
     0% { opacity: 0; transform: translate(-50%, -55%); }
