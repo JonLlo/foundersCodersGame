@@ -110,6 +110,7 @@ function drawPlayer(user) {
     if (userImageLoaded) {
         // Draw a glowing circle around the user when invincible
         if (user.isInvincible) {
+            ctx.strokeStyle = "gold";  // Set the stroke color to gold
             ctx.shadowColor = "gold";  // Set the shadow color to gold for the glowing effect
             ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
             ctx.lineWidth = 5;         // Set the width of the circle's border
@@ -118,6 +119,7 @@ function drawPlayer(user) {
             ctx.stroke();  // Apply the stroke (outline)
             ctx.shadowBlur = 0; // Reset shadow blur to avoid affecting other objects
         }
+
 
         // Draw the user image (player or player2)
         ctx.drawImage(userImage, user.x, user.y, user.width, user.height);
@@ -372,8 +374,38 @@ function checkCollisions(user) {
 
 
     if (user.lives > 1) {
+        if (user == player) {
+
+            let imgUrl = new URL(playerImage.src);
+            ImageSrc = imgUrl.pathname;
+
+        }
+        else {
+            let imgUrl2 = new URL(player2Image.src);
+            ImageSrc = imgUrl2.pathname;
+        }
         user.lives--; // Reduce life count
-        return;
+
+        
+        // Make player temporarily invincible
+        user.isInvincible = true;
+        user.invincibleTime = 30; // 10 seconds (30 frames per second)
+
+        // Show "Life Lost!" message and image
+        let lifeLostContainer = document.getElementById("lifeLostContainer");
+        let lifeLostImage = document.getElementById("lifeLostImage");
+
+        lifeLostImage.src = ImageSrc; // Set the correct image path
+        lifeLostContainer.style.display = "block"; // Show message and image
+        // Hide the message after 2 seconds
+        setTimeout(() => {
+            lifeLostContainer.style.display = "none";
+        }, 1000);
+
+
+        return; // Prevents further processing
+
+
 
 
     } else {
@@ -423,8 +455,41 @@ function checkCollisions(user) {
             console.log('Monster Collision')
 
             if (user.lives > 1) {
-                user.lives--; 
-                return;
+                if (user == player) {
+                    let imgUrl = new URL(player2Image.src);
+                    ImageSrc = imgUrl.pathname;
+
+                
+
+                }
+                else {
+
+                    let imgUrl2 = new URL(player2Image.src);
+                    ImageSrc = imgUrl2.pathname;
+                }
+                
+                user.lives--; // Reduce life count
+        
+                        // Make player temporarily invincible
+                        user.isInvincible = true;
+                        user.invincibleTime = 30; // 10 seconds (30 frames per second)
+
+                        // Show "Life Lost!" message and image
+                        let lifeLostContainer = document.getElementById("lifeLostContainer");
+                        let lifeLostImage = document.getElementById("lifeLostImage");
+                
+                        lifeLostImage.src = ImageSrc; // Set the correct image path
+                        lifeLostContainer.style.display = "block"; // Show message and image
+                        // Hide the message after 2 seconds
+                        setTimeout(() => {
+                            lifeLostContainer.style.display = "none";
+                        }, 1000);
+
+                
+                        return; // Prevents further processing
+        
+        
+            
 
         
             } else {
@@ -432,17 +497,17 @@ function checkCollisions(user) {
 
             // Determine which player lost
                         // Determine which player lost
-                        let winningPlayer, winnerImageSrc;
+            let winningPlayer, winnerImageSrc;
 
-                        if (user === player) {
-                            let imgUrl2 = new URL(player2Image.src);
-                            winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
-                            winningPlayer = "Player 2";
-                        } else {
-                            let imgUrl = new URL(playerImage.src);
-                            winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
-                            winningPlayer = "Player 1";
-                        }
+            if (user === player) {
+                let imgUrl2 = new URL(player2Image.src);
+                winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                winningPlayer = "Player 2";
+            } else {
+                let imgUrl = new URL(playerImage.src);
+                winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                winningPlayer = "Player 1";
+            }
             console.log(winnerImageSrc)
 
             // Update modal title to show the winner

@@ -102,3 +102,37 @@ button {
     border: 3px solid red; /* Adds a red border around Player 2's selected character */
     box-shadow: 0 0 10px red; /* Optional: adds a glowing effect */
 }
+
+
+#lifeLostContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none; /* Hidden by default */
+    animation: fadeInOut 2s ease-in-out;
+}
+
+#lifeLostMessage {
+    font-size: 3rem;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8);
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 10px;
+}
+
+#lifeLostImage {
+    width: 100px; /* Adjust size */
+    height: auto;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -55%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -45%); }
+}
+

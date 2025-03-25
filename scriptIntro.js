@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const onePlayerButton = document.getElementById('onePlayerButton');
     const twoPlayersButton = document.getElementById('twoPlayersButton');
     const characterSelectionModal = document.getElementById('characterSelectionModal');
+    const gameModal = document.getElementById('gameModal');
+
+
     const characterGrid = document.getElementById('characterGrid');
     const confirmSelectionButton = document.getElementById('confirmSelectionButton');
     const modalTitle = document.getElementById('modalTitle');
@@ -74,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display the character selection modal for 2 players
     twoPlayersButton.addEventListener('click', function() {
         displayCharacterGrid();
+        gameModal.style.display = 'none'; // Show the modal
         characterSelectionModal.style.display = 'block'; // Show the modal
         modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
         currentPlayer = 1; // Set to Player 1
