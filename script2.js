@@ -1,6 +1,11 @@
 let gameRunning = true; // Global flag to control the game loop
 let isPaused = false; // Track game state
-
+const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
+coinSound.volume = 0.5; // Default volume (can be adjusted)
+const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
+slashSound.volume = 0.5; // Default volume (can be adjusted)
+const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
+shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2) {
 
 
@@ -232,7 +237,7 @@ if (player.isInvincible) {
     const invincibleSeconds = Math.floor(player.invincibleTime / 30); // Convert frames to seconds
     ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
     ctx.font = "20px Arial";
-    ctx.fillText("Invincible Time: " + invincibleSeconds, 10, 60); // Display the time at the top left
+    ctx.fillText("" + invincibleSeconds, 10, 90); // Display the time at the top left
 }
 }
 function drawJetpackFuel() {
@@ -257,11 +262,11 @@ function drawCoinScore2() {
     ctx.fillText("Coins: " + coinScore2, 150, 40);
 }
 function drawInvincibilityTime2() {
-if (player.isInvincible) {
-    const invincibleSeconds = Math.floor(player.invincibleTime2 / 30); // Convert frames to seconds
+if (player2.isInvincible) {
+    const invincibleSeconds = Math.floor(player2.invincibleTime / 30); // Convert frames to seconds
     ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
     ctx.font = "20px Arial";
-    ctx.fillText("Invincible Time: " + invincibleSeconds, 10, 60); // Display the time at the top left
+    ctx.fillText("Invincible Time: " + invincibleSeconds, 150, 90); // Display the time at the top left
 }
 }
 function drawJetpackFuel2() {
@@ -406,7 +411,8 @@ function checkCollisions(user) {
         lifeLostImage.src = ImageSrc; // Set the correct image path
         lifeLostContainer.style.display = "block"; // Show message and image
 
-
+        slashSound.currentTime = 0; // Restart sound so it plays every time
+        slashSound.play();
 
         // Hide the message after 2 seconds
         setTimeout(() => {
@@ -491,6 +497,8 @@ function checkCollisions(user) {
                 
                         lifeLostImage.src = ImageSrc; // Set the correct image path
                         lifeLostContainer.style.display = "block"; // Show message and image
+                        slashSound.currentTime = 0; // Restart sound so it plays every time
+                        slashSound.play();
                         // Hide the message after 2 seconds
                         setTimeout(() => {
                             lifeLostContainer.style.display = "none";
@@ -547,8 +555,11 @@ function checkCollisions(user) {
         if (user.x < box.x + box.width &&
             user.x + user.width > box.x &&
             user.y < box.y + box.height &&
-            user.y + user.height > box.y) {
+            user.y + user.height > box.y && !user.isInvincible ) {
             user.isInvincible = true;
+            shieldSound.currentTime = 0; // Restart sound so it plays every time
+            shieldSound.play();
+    
             user.invincibleTime = 300; // 10 seconds (30 frames per second)
             invincibilityBoxes = invincibilityBoxes.filter(b => b !== box); // Remove the box
         }
@@ -556,8 +567,7 @@ function checkCollisions(user) {
 
                 // Collision with invincibility box
 
-    const coinSound = new Audio("sound/coin.wav"); // Replace with your coin sound file
-    coinSound.volume = 0.5; // Default volume (can be adjusted)
+
     coins.forEach(coin => {
         if (user.x < coin.x + coin.width &&
             user.x + user.width > coin.x &&
