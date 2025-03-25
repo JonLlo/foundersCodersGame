@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Function to toggle pause
+
+
     // Get modal and buttons
     const onePlayerButton = document.getElementById('onePlayerButton');
     const twoPlayersButton = document.getElementById('twoPlayersButton');
@@ -61,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Enable the "OK" button once a character is selected
         confirmSelectionButton.style.display = 'block';
     }
+
 
     // Handle the confirm button click
     confirmSelectionButton.addEventListener('click', function() {
