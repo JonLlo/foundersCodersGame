@@ -198,21 +198,28 @@ function drawCoins() {
 let monsterImage = new Image();
 let enemyImage = new Image();
 let coinImage = new Image();
+let shieldImage = new Image();
 
 
 
 if (theme === "western") {
-    monsterImage.src = "icons/monsters/pistol.png";
+    monsterImage.src = "icons/monsters/blue-monster.png";
     enemyImage.src = "icons/enemies/cactus.png";
     coinImage.src = 'icons/coin/silver.png';
+    shieldImage.src = 'shield-icon.png'; 
+
 } else if (theme === "sea") {
     monsterImage.src = 'icons/monsters/fish.png';
     enemyImage.src = "icons/enemies/cactus.png";
     coinImage.src = 'icons/coin/gold.png';
+    shieldImage.src = 'icons/shields/cocktail.png'; 
+
 } else {
     monsterImage.src = 'icons/monsters/monster-icon.png';  // Path to the monster image
     enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
     coinImage.src = 'coin-icon.png';
+    shieldImage.src = 'shield-icon.png'; 
+
 
 }
         function drawMonsters() {
@@ -252,8 +259,7 @@ function drawEnemies() {
     });
 }
 
-let shieldImage = new Image();
-shieldImage.src = 'shield-icon.png'; 
+
 function drawInvincibilityBoxes() {
   
     invincibilityBoxes.forEach(shield => {
