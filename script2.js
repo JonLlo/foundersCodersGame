@@ -185,8 +185,9 @@ function drawPlatforms() {
     });
 }
 
-let coinImage = new Image();
-coinImage.src = 'coin-icon.png';
+
+
+
 function drawCoins() {
     coins.forEach(coin => {
         ctx.drawImage(coinImage, coin.x, coin.y, coin.width, coin.height);
@@ -195,12 +196,24 @@ function drawCoins() {
 
 
 let monsterImage = new Image();
+let enemyImage = new Image();
+let coinImage = new Image();
+
+
+
 if (theme === "western") {
     monsterImage.src = "icons/monsters/pistol.png";
+    enemyImage.src = "icons/enemies/cactus.png";
+    coinImage.src = 'icons/coin/silver.png';
 } else if (theme === "sea") {
     monsterImage.src = 'icons/monsters/fish.png';
+    enemyImage.src = "icons/enemies/cactus.png";
+    coinImage.src = 'icons/coin/gold.png';
 } else {
     monsterImage.src = 'icons/monsters/monster-icon.png';  // Path to the monster image
+    enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
+    coinImage.src = 'coin-icon.png';
+
 }
         function drawMonsters() {
     monsters.forEach(monster => {
@@ -219,14 +232,7 @@ if (theme === "western") {
 
 
      
-let enemyImage = new Image();
-if (theme === "western") {
-    enemyImage.src = "icons/enemies/cactus.png";
-} else if (theme === "sea") {
-    enemyImage.src = "icons/enemies/cactus.png";
-} else {
-    enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
-}
+
 // Path to the monster image
 function drawEnemies() {
     enemies.forEach(enemy => {
