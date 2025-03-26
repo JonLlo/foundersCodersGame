@@ -20,8 +20,8 @@
 
     <container id="canvasContainer">
         <canvas id="gameCanvas" width="800" height="400"></canvas>
-        
-        <div id="playerStats">
+
+        <div id="playerStats" style="display: none;">
             <div class="player-info">
                 <img id="playerImage" src="" alt="Player Image" />
                 <div class="info">
@@ -33,7 +33,7 @@
             </div>
         </div>
         
-        <div id="playerStats2">
+        <div id="playerStats2" style="display: none;">
             <div class="player-info">
                 <img id="player2Image" src="" alt="Player 2 Image" />
                 <div class="info">
@@ -47,7 +47,7 @@
         <span id="soundIcon" class="unmuted">&#x1F50A;</span> <!-- Speaker icon -->
 
         <audio id="backgroundMusic" loop>
-            <source src="sound/12.mp3" type="audio/mp3">
+            <source id="tune" src="" type="audio/mp3">
             <source src="background-music.ogg" type="audio/ogg">
             Your browser does not support the audio element.
           </audio>

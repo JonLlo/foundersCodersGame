@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedImage2 = null; // To keep track of the currently selected image element for Player 2
 
     const characters = [
-        'characters/1.png', 'characters/2.png', 'characters/3.gif', 'characters/4.png',
-        'characters/5.jpg', 'characters/6.png', 'characters/7.png', 'characters/8.png'
+        'characters/1.png', 'characters/2.png', 'characters/3.png', 'characters/4.png',
+        'characters/5.png', 'characters/6.png', 'characters/7.png', 'characters/8.png'
     ];
 
     // Function to display the character grid

@@ -6,25 +6,37 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2, theme) {
+    document.getElementById("playerStats").style.display = "flex"; // Hide modal
+    document.getElementById("playerStats2").style.display = "flex"; // Hide modal
+
+
 
 
     const canvas = document.getElementById("gameCanvas"); // Use existing canvas
     const ctx = canvas.getContext("2d");
+    const music = document.getElementById("backgroundMusic");
+const mp3Source = document.getElementById("tune"); // Source for MP3
 
-    if (theme === "western") {
-        canvas.classList.add("western"); // Apply theme-specific styles
-    }
-    else if (theme === "sea") {
-        canvas.classList.add("sea"); 
-        
-    }
-
+// Handle theme change
+if (theme === "normal") {
+    canvas.classList.add("normal");  // Apply western theme
+    mp3Source.src = "sound/normal.mp3";  // Set western theme music
+} else if (theme === "sea") {
+    canvas.classList.add("sea");  // Apply sea theme
+    mp3Source.src = "sound/beach.mp3";  // Set beach theme music
+}
+ else if (theme === "western") {
+    canvas.classList.add("western");  // Apply sea theme
+    mp3Source.src = "sound/wildWest.mp3";  // Set beach theme music
+}
 
 
 
 
     let isPaused = false; // Track game state
-    const music = document.getElementById("backgroundMusic");
+    music.load();  // Reload the audio to apply new source
+    music.volume = 0.3;
+
     music.play();  // Starts the music
 
 
@@ -37,7 +49,6 @@ function start2PlayerGame(p1, p2, theme) {
 
 // Toggle sound (mute/unmute)
 function toggleSound() {
-    const music = document.getElementById("backgroundMusic");
     const soundIcon = document.getElementById("soundIcon");
 
     if (music.paused || music.muted) {
@@ -459,6 +470,7 @@ function checkCollisions(user) {
             document.getElementById("scores").textContent = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2}`;
 
             // Show the results modal
+            music.pause();
             document.getElementById("resultsModal").style.display = "block";
             //location.reload();  // Restart the game on collision with enemy
            
@@ -714,10 +726,14 @@ function togglePause(event) {
             document.getElementById("pauseModal").style.display = "flex";
 
             console.log("Game Paused");
+            music.pause();  // Starts the music
+
         } else {
             document.getElementById("pauseModal").style.display = "none";
 
             console.log("Game Resumed");
+            music.play();  // Starts the music
+
         }
     }
     }
