@@ -5,7 +5,17 @@ const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound
 slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
+const restart = document.getElementById('restartButton');
+
 function start2PlayerGame(p1, p2, theme) {
+
+
+
+;
+
+
+
+
     document.getElementById("playerStats").style.display = "flex"; // Hide modal
     document.getElementById("playerStats2").style.display = "flex"; // Hide modal
 
@@ -15,7 +25,7 @@ function start2PlayerGame(p1, p2, theme) {
     const canvas = document.getElementById("gameCanvas"); // Use existing canvas
     const ctx = canvas.getContext("2d");
     const music = document.getElementById("backgroundMusic");
-const mp3Source = document.getElementById("tune"); // Source for MP3
+    const mp3Source = document.getElementById("tune"); // Source for MP3
 
 // Handle theme change
 if (theme === "normal") {
@@ -66,7 +76,9 @@ function toggleSound() {
 document.getElementById("soundIcon").addEventListener("click", toggleSound);
 
 
-
+document.getElementById("resumeButton").addEventListener("click", function() {
+    music.play();
+});
 
 
 let player = {
@@ -746,7 +758,7 @@ function togglePause(event) {
 
     document.getElementById("mainMenuButton").addEventListener("click", () => {
     window.location.href = "index.html"; 
-});
+}); 
 
 
 
@@ -832,4 +844,10 @@ gameLoop();
 
 
 }
+
+
+
+
+
+
 

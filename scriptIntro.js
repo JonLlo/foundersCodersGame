@@ -1,4 +1,8 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
+
     // Function to toggle pause
 
 
@@ -16,14 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const characterSelectionModal = document.getElementById('characterSelectionModal');
     const gameModal = document.getElementById('gameModal');
-    const restart = document.getElementById('restartButton');
     const pause = document.getElementById('pauseModal')
 
 
     const characterGrid = document.getElementById('characterGrid');
     const confirmSelectionButton = document.getElementById('confirmSelectionButton');
     const modalTitle = document.getElementById('modalTitle');
-    const resultsModalReplay = document.getElementById('playAgain');
+
     const resultsModalDiffChar = document.getElementById('playDiffChar');
 
 
@@ -143,12 +146,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   */
 
-    resultsModalReplay.addEventListener('click', function() {
+    const restart = document.getElementById('restartButton');
+    const replay = document.getElementById('playAgain');
+
+
+    replay.addEventListener('click', function() {
         start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
 
     });
+
+
+
+
+
+    restart.addEventListener('click', function() {
+    start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
+
+
+
+})
+
+
+
     resultsModalDiffChar.addEventListener('click', function() {
-    location.reload()
+    location.reload();
     });
 
 
