@@ -6,7 +6,6 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2, theme) {
-    alert(theme)
 
 
     const canvas = document.getElementById("gameCanvas"); // Use existing canvas
@@ -207,18 +206,27 @@ if (theme === "western") {
     enemyImage.src = "icons/enemies/cactus.png";
     coinImage.src = 'icons/coin/silver.png';
     shieldImage.src = 'shield-icon.png'; 
+    scoreColor = "black"
+    coinScoreColor = "black"
+    livesScoreColor = "black"
 
 } else if (theme === "sea") {
     monsterImage.src = 'icons/monsters/fish.png';
     enemyImage.src = "icons/enemies/cactus.png";
     coinImage.src = 'icons/coin/gold.png';
     shieldImage.src = 'icons/shields/cocktail.png'; 
+    scoreColor = "black"
+    coinScoreColor = "red"
+    livesScoreColor = "purple"
 
 } else {
     monsterImage.src = 'icons/monsters/monster-icon.png';  // Path to the monster image
     enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
     coinImage.src = 'coin-icon.png';
     shieldImage.src = 'shield-icon.png'; 
+    scoreColor = "black"
+    coinScoreColor = "red"
+    livesScoreColor = "purple"
 
 
 }
@@ -268,72 +276,6 @@ function drawInvincibilityBoxes() {
 }
 
 
-
-
-function drawScore() {
-    ctx.fillStyle = "black";
-    ctx.font = "20px Arial";
-    ctx.fillText("Score: " + score, 10, 20);
-}
-function drawLives() {
-    ctx.fillStyle = "Purple";
-    ctx.font = "20px Arial";
-    ctx.fillText("Lives: " + player.lives, 10, 60);
-}
-function drawplayerImage() {
-    ctx.drawImage(playerImage, 30, 70, 40, 40);
-
-}
-function drawplayer2Image() {
-    ctx.drawImage(player2Image, 160, 70, 40, 40);
-
-}
-function drawCoinScore() {
-    ctx.fillStyle = "red";
-    ctx.font = "20px Arial";
-    ctx.fillText("Coins: " + coinScore, 10, 40);
-}
-function drawInvincibilityTime() {
-if (player.isInvincible) {
-    const invincibleSeconds = Math.floor(player.invincibleTime / 30); // Convert frames to seconds
-    ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
-    ctx.font = "20px Arial";
-    ctx.fillText("" + invincibleSeconds, 10, 90); // Display the time at the top left
-}
-}
-function drawJetpackFuel() {
-    ctx.fillStyle = "blue";
-    ctx.fillRect(10, 80, player.jetpackFuel, 10);
-}
-
-
-function drawScore2() {
-    ctx.fillStyle = "black";
-    ctx.font = "20px Arial";
-    ctx.fillText("Score: " + score2, 150, 20);
-}
-function drawLives2() {
-    ctx.fillStyle = "Purple";
-    ctx.font = "20px Arial";
-    ctx.fillText("Lives: " + player2.lives, 150, 60);
-}
-function drawCoinScore2() {
-    ctx.fillStyle = "red";
-    ctx.font = "20px Arial";
-    ctx.fillText("Coins: " + coinScore2, 150, 40);
-}
-function drawInvincibilityTime2() {
-if (player2.isInvincible) {
-    const invincibleSeconds = Math.floor(player2.invincibleTime / 30); // Convert frames to seconds
-    ctx.fillStyle = "yellow"; // Set the color to gold for invincibility time
-    ctx.font = "20px Arial";
-    ctx.fillText("" + invincibleSeconds, 150, 90); // Display the time at the top left
-}
-}
-function drawJetpackFuel2() {
-    ctx.fillStyle = "blue";
-    ctx.fillRect(10, 80, player.jetpackFuel2, 10);
-}
 
 
 function updatePlayer(user, keys) {
@@ -798,22 +740,40 @@ function togglePause(event) {
 
 
 
+    function updateStats() {
 
+        // Update Player 1 Stats
+        document.getElementById("scoreNumber").textContent = "Score: " + score;
+        document.getElementById("scoreCoin").textContent = "Coins: " + coinScore;
+        document.getElementById("lives").textContent = "Lives: " + player.lives;
+
+        document.getElementById("invincibleDisplay").textContent = player.isInvincible ? "Invinc: " + Math.floor(player.invincibleTime / 30) : "Invinc: 0";
+        document.getElementById("playerImage").src = playerImage.src; // Set the player image
+    
+        // Update Player 2 Stats
+        document.getElementById("scoreNumber2").textContent = "Score: " + score2;
+        document.getElementById("scoreCoin2").textContent = "Coins: " + coinScore2;
+        document.getElementById("lives2").textContent = "Lives: " + player2.lives;
+
+        document.getElementById("invincibleDisplay2").textContent = player2.isInvincible ? "Invinc: " + Math.floor(player2.invincibleTime / 30) : "Invinc: 0";
+        document.getElementById("player2Image").src = player2Image.src // Set player 2 image
+    }
 
 
 function gameLoop() {
     if (gameRunning && !isPaused) {
+   
+
+        
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPlatforms();
     drawEnemies();
     drawCoins();
     drawMonsters();
 
-    drawScore();
-    drawScore2();
+   
 
-    drawInvincibilityTime()
-    drawInvincibilityTime2()
+ 
 
     //drawJetpackFuel();
     //drawJetpackFuel2();
@@ -829,10 +789,8 @@ function gameLoop() {
     updateEnemies();
     updateCoins();
     updateMonsters();
-    drawLives();
-    drawLives2();
-    drawCoinScore();
-    drawCoinScore2();
+
+
 
 
     updateInvincibilityBoxes();
@@ -842,8 +800,9 @@ function gameLoop() {
 
     drawPlayer(player);
     drawPlayer(player2);
-    drawplayerImage(player);
-    drawplayer2Image(player2);
+
+    updateStats();
+
 
 }
 
