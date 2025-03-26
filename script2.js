@@ -5,7 +5,23 @@ const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound
 slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
-function start2PlayerGame(p1, p2) {
+function start2PlayerGame(p1, p2, theme) {
+
+
+    const canvas = document.getElementById("gameCanvas"); // Use existing canvas
+    const ctx = canvas.getContext("2d");
+
+    if (theme === "western") {
+        canvas.classList.add("western"); // Apply theme-specific styles
+    }
+    else if (theme === "sea") {
+        canvas.classList.add("sea"); 
+    }
+
+
+
+
+
     let isPaused = false; // Track game state
     const music = document.getElementById("backgroundMusic");
     music.play();  // Starts the music
@@ -40,8 +56,6 @@ document.getElementById("soundIcon").addEventListener("click", toggleSound);
 
 
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
 
 let player = {
     x: 50,
@@ -198,7 +212,14 @@ monsterImage.src = 'monster-icon.png';  // Path to the monster image
 
      
 let enemyImage = new Image();
-enemyImage.src = 'enemy-icon.png';  // Path to the monster image
+if (theme === "western") {
+    enemyImage.src = "icons/enemies/cactus.png";
+} else if (theme === "sea") {
+    enemyImage.src = "icons/enemies/cactus.png";
+} else {
+    enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
+}
+// Path to the monster image
 function drawEnemies() {
     enemies.forEach(enemy => {
 

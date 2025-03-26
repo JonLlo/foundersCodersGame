@@ -29,6 +29,24 @@ body {
 }
 
 
+#gameCanvas.western {
+    background-color: saddlebrown;
+    border: 5px solid darkred;
+}
+#gameCanvas.sea {
+    background-color: blue;
+    border: 5px solid darkred;
+}
+#gameCanvas.football {
+    background-color: green;
+    border: 5px solid darkred;
+}
+
+
+
+
+
+
 
  #resultsModal {
     display: flex;
@@ -73,7 +91,7 @@ body {
     margin: 10px 0;  /* Space around text */
 }
 
-#gameModal  {
+#gameModal, #themeModal  {
     display: flex;
     justify-content: center;
     align-items: center;

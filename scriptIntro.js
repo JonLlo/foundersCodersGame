@@ -3,8 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Get modal and buttons
+    let theme = ''
     const onePlayerButton = document.getElementById('onePlayerButton');
     const twoPlayersButton = document.getElementById('twoPlayersButton');
+    const normalButton = document.getElementById('normalButton')
+    const westernButton = document.getElementById('westernButton')
+    const seaButton = document.getElementById('seaButton')
+
+
+
+
+
     const characterSelectionModal = document.getElementById('characterSelectionModal');
     const gameModal = document.getElementById('gameModal');
     const restart = document.getElementById('restartButton');
@@ -76,10 +85,51 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
         } else if (currentPlayer === 2 && player2Character) {
             characterSelectionModal.style.display = 'none'; // Hide modal when both players select
-            start2PlayerGame(playerCharacter, player2Character); // Start the game
+            start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
         }
     });
 
+
+    twoPlayersButton.addEventListener('click', function() {
+        gameModal.style.display = 'none'; // Show the modal
+        themeModal.style.display = 'block'; // Show the modal
+
+    })
+
+
+   normalButton.addEventListener('click', function() {
+        theme = 'normal';
+        displayCharacterGrid();
+        themeModal.style.display = 'none'; // Show the modal
+        characterSelectionModal.style.display = 'block'; // Show the modal
+        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        currentPlayer = 1; // Set to Player 1
+        confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
+    });
+    westernButton.addEventListener('click', function() {
+        theme = 'western';
+        displayCharacterGrid();
+        themeModal.style.display = 'none'; // Show the modal
+        characterSelectionModal.style.display = 'block'; // Show the modal
+        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        currentPlayer = 1; // Set to Player 1
+        confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
+    });
+    seaButton.addEventListener('click', function() {
+        theme = 'sea';
+        displayCharacterGrid();
+        themeModal.style.display = 'none'; // Show the modal
+        characterSelectionModal.style.display = 'block'; // Show the modal
+        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        currentPlayer = 1; // Set to Player 1
+        confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
+    });
+
+
+
+
+
+/*
     // Display the character selection modal for 2 players
     twoPlayersButton.addEventListener('click', function() {
         displayCharacterGrid();
@@ -91,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-  
+  */
 
     resultsModalReplay.addEventListener('click', function() {
-        start2PlayerGame(playerCharacter, player2Character); // Start the game
+        start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
 
     });
     resultsModalDiffChar.addEventListener('click', function() {
