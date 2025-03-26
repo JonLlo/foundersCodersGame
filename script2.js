@@ -6,6 +6,7 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 function start2PlayerGame(p1, p2, theme) {
+    alert(theme)
 
 
     const canvas = document.getElementById("gameCanvas"); // Use existing canvas
@@ -16,6 +17,7 @@ function start2PlayerGame(p1, p2, theme) {
     }
     else if (theme === "sea") {
         canvas.classList.add("sea"); 
+        
     }
 
 
@@ -193,7 +195,13 @@ function drawCoins() {
 
 
 let monsterImage = new Image();
-monsterImage.src = 'monster-icon.png';  // Path to the monster image
+if (theme === "western") {
+    monsterImage.src = "icons/monsters/pistol.png";
+} else if (theme === "sea") {
+    monsterImage.src = 'icons/monsters/fish.png';
+} else {
+    monsterImage.src = 'icons/monsters/monster-icon.png';  // Path to the monster image
+}
         function drawMonsters() {
     monsters.forEach(monster => {
         ctx.shadowColor = "rgba(255, 0, 0, 0.8)";  // Red glow with opacity

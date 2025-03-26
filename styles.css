@@ -6,14 +6,7 @@ body {
 }
 
 /* Style for the canvas */
-#gameCanvas {
-    border: 2px solid black;
-    background-color: lightblue;
-    display: block;
-    margin: auto;
-    border: 1px solid #000;
- 
-}
+
 #canvasContainer {
     border: 2px solid black;
     background-color: lightblue;
@@ -30,17 +23,31 @@ body {
 
 
 #gameCanvas.western {
-    background-color: saddlebrown;
-    border: 5px solid darkred;
+    background-image:  url("icons/canvas/wildWest.png");
+    display: block;
+    margin: auto;
+    border: 1px solid #000;
+    background-size: cover; /* Ensures the image fully covers the element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
 }
 #gameCanvas.sea {
-    background-color: blue;
-    border: 5px solid darkred;
-}
-#gameCanvas.football {
-    background-color: green;
-    border: 5px solid darkred;
-}
+    background-image: url("icons/canvas/sea.jpg");
+    display: block;
+    margin: auto;
+    border: 1px solid #000;
+    background-size: cover; /* Ensures the image fully covers the element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */}
+#gameCanvas.normal {
+    border: 2px solid black;
+    background-color: lightblue;
+    display: block;
+    margin: auto;
+    border: 1px solid #000;
+    background-size: cover; /* Ensures the image fully covers the element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Ensures the image doesn't repeat */}
 
 
 
