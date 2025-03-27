@@ -97,8 +97,8 @@ let player = {
     jetpackFuelRechargeRate: 0.1,
     isInvincible: false, // Invincibility flag
     invincibleTime: 0,   // Time remaining for invincibility
-    isInvincible2: false, // Invincibility flag
-    invincibleTime2: 0,   // Time remaining for invincibility
+    isinvincibleCol: false, // Invincibility flag
+    invincibletimeCol: 0,   // Time remaining for invincibility
     lives: 3,
     
 };
@@ -119,8 +119,8 @@ let player2 = {
     jetpackFuelRechargeRate: 0.1,
     isInvincible: false, // Invincibility flag
     invincibleTime: 0,   // Time remaining for invincibility
-    isInvincible2: false, // Invincibility flag
-    invincibleTime2: 0,   // Time remaining for invincibility
+    isinvincibleCol: false, // Invincibility flag
+    invincibletimeCol: 0,   // Time remaining for invincibility
     lives: 3,
 
 };
@@ -381,11 +381,11 @@ function updateInvincibility(user) {
         }
     }
 }
-function updateInvincibility2(user) {
-    if (user.isInvincible2) {
-        user.invincibleTime2 -= 1;
-        if (user.invincibleTime2 <= 0) {
-            user.isInvincible2 = false; // End invincibility
+function updateInvincibilityCol(user) {
+    if (user.isinvincibleCol) {
+        user.invincibletimeCol -= 1;
+        if (user.invincibletimeCol <= 0) {
+            user.isinvincibleCol = false; // End invincibility
         }
     }
 }
@@ -417,7 +417,7 @@ function checkCollisions(user) {
      
 
 
-        if (!user.isInvincible && !user.isInvincible2 && // Only trigger collision if not invincible
+        if (!user.isInvincible && !user.isinvincibleCol && // Only trigger collision if not invincible
             user.x < enemy.x + enemy.width &&
             user.x + user.width > enemy.x &&
             user.y < enemy.y + enemy.height &&
@@ -441,8 +441,8 @@ function checkCollisions(user) {
 
         
         // Make player temporarily invincible
-        user.isInvincible2 = true;
-        user.invincibleTime2 = 30; // 10 seconds (30 frames per second)
+        user.isinvincibleCol = true;
+        user.invincibletimeCol = 30; // 10 seconds (30 frames per second)
 
         // Show "Life Lost!" message and image
         let lifeLostContainer = document.getElementById("lifeLostContainer");
@@ -504,7 +504,7 @@ function checkCollisions(user) {
     })
     // Collision with enemies
     monsters.forEach(monster => {
-        if (!user.isInvincible && !user.isInvincible2 && // Only trigger collision if not invincible
+        if (!user.isInvincible && !user.isinvincibleCol && // Only trigger collision if not invincible
             user.x < monster.x + monster.width &&
             user.x + user.width > monster.x &&
             user.y < monster.y + monster.height &&
@@ -529,8 +529,8 @@ function checkCollisions(user) {
                 user.lives--; // Reduce life count
         
                         // Make player temporarily invincible
-                        user.isInvincible2 = true;
-                        user.invincibleTime2 = 30; // 10 seconds (30 frames per second)
+                        user.isinvincibleCol = true;
+                        user.invincibletimeCol = 30; // 10 seconds (30 frames per second)
 
                         // Show "Life Lost!" message and image
                         let lifeLostContainer = document.getElementById("lifeLostContainer");
@@ -827,8 +827,8 @@ function gameLoop() {
 
     updateInvincibility(player);
     updateInvincibility(player2);
-    updateInvincibility2(player);
-    updateInvincibility2(player2);
+    updateInvincibilityCol(player);
+    updateInvincibilityCol(player2);
 
     updateEnemies();
     updateCoins();
