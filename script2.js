@@ -190,6 +190,7 @@ let player = {
     isinvincibleCol: false, // Invincibility flag
     invincibletimeCol: 0,   // Time remaining for invincibility
     lives: 3,
+    isDead: false,
     
 };
 
@@ -212,6 +213,8 @@ let player2 = {
     isinvincibleCol: false, // Invincibility flag
     invincibletimeCol: 0,   // Time remaining for invincibility
     lives: 3,
+    isDead: false,
+
 
 };
 
@@ -277,6 +280,19 @@ function drawPlayer(user) {
         if (user.isInvincible) {
             ctx.strokeStyle = "goldenrod";  // Set the stroke color to gold
             ctx.shadowColor = "goldenrod";  // Set the shadow color to gold for the glowing effect
+            ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
+            ctx.lineWidth = 5;         // Set the width of the circle's border
+            ctx.beginPath();
+            ctx.arc(user.x + user.width / 2, user.y + user.height / 2, user.width + 10, 0, Math.PI * 2); // Draw a circle around the user
+            ctx.stroke();  // Apply the stroke (outline)
+            ctx.shadowBlur = 0; // Reset shadow blur to avoid affecting other objects
+        }
+        if (user.isDead) {
+            user.lives = "0"
+            user.x = -1000;  // Move the user to a very large negative x value (off the left side of the canvas)
+            user.y = -1000;  // Move the user to a very large negative y value (off the top side of the canvas)
+            ctx.strokeStyle = "red";  // Set the stroke color to gold
+            ctx.shadowColor = "red";  // Set the shadow color to gold for the glowing effect
             ctx.shadowBlur = 15;       // Control the blur effect (higher is more blurry)
             ctx.lineWidth = 5;         // Set the width of the circle's border
             ctx.beginPath();
@@ -481,6 +497,7 @@ function updateInvincibilityCol(user) {
 }
 
 
+
 function updateInvincibilityBoxes() {
     if (Math.random() < 0.005) { // Chance to spawn invincibility box
         let newBox = {
@@ -559,6 +576,19 @@ function checkCollisions(user) {
 
 
             console.log('Enemy Collision')
+
+
+
+            user.isDead = true
+
+
+        
+
+            if ((player.isDead && player2.isDead) || !twoPlayers) {
+
+
+
+
             gameRunning = false;
             if (twoPlayers === true) {
             // Determine which player lost
@@ -608,6 +638,7 @@ function checkCollisions(user) {
             //location.reload();  // Restart the game on collision with enemy
            
         }}
+    }
     })
     // Collision with enemies
     monsters.forEach(monster => {
@@ -617,7 +648,6 @@ function checkCollisions(user) {
             user.y < monster.y + monster.height &&
             user.y + user.height > monster.y
         ) {
-            console.log('Monster Collision')
 
             if (user.lives > 1) {
                 if (user == player) {
@@ -660,6 +690,17 @@ function checkCollisions(user) {
 
         
             } else {
+
+            console.log('Monster Collision')
+
+
+            user.isDead = true
+            
+
+
+
+            if ((player.isDead && player2.isDead) || !twoPlayers) {
+
             gameRunning = false;
 
             // Determine which player lost
@@ -710,7 +751,7 @@ function checkCollisions(user) {
             //location.reload();  // Restart the game on collision with enemy
                    }}
     }
-    
+}
     
     
     );
