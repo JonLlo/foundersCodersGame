@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
     else {
-
+alert('ok')
         characterSelectionModal.style.display = 'none'; // Hide modal when both players select
 
         start2PlayerGame(playerCharacter, playerCharacter, theme); // Start the game

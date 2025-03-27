@@ -1,4 +1,4 @@
-let gameRunning = true; // Global flag to control the game loop
+let gameRunning = true;
 const coinSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 coinSound.volume = 0.5; // Default volume (can be adjusted)
 const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
@@ -7,12 +7,9 @@ const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sou
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 const restart = document.getElementById('restartButton');
 
+
+
 function start2PlayerGame(p1, p2, theme) {
-
-
-
-;
-
 
 
 
