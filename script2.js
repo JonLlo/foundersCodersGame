@@ -587,60 +587,90 @@ function checkCollisions(user) {
 
         
 
-            if ((player.isDead && player2.isDead) || !twoPlayers) {
+ 
+     if ((player.isDead && player2.isDead) || !twoPlayers) {
 
-
-
-
-            gameRunning = false;
-            if (twoPlayers === true) {
-            // Determine which player lost
-            let winningPlayer, winnerImageSrc;
-
-            if (user === player) {
-                let imgUrl2 = new URL(player2Image.src);
-                winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
-                winningPlayer = "Player 2";
-            } else {
-                let imgUrl = new URL(playerImage.src);
-                winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
-                winningPlayer = "Player 1";
-            }
-
-
-            // Update modal title to show the winner
-            console.log(winnerImageSrc)
-           
-            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
-            document.getElementById("scores").innerHTML = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2} <br><br> Score: ${score}`;
-            document.getElementById("winnerImage").src = winnerImageSrc;
-
-
-            }
-            else {
-                let imgUrl = new URL(playerImage.src);
-                winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                gameRunning = false;
+    
+                // Determine which player lost
+                            // Determine which player lost
+                if (twoPlayers === true) {
+                let winningPlayer, winnerImageSrc;
+             
                 
-
+    
+         
+                if (user === player) {
+                    //here 'player' died second.
+                    //if 'player' has greater than or equal the amount of coins that 'player2' has, 'player wins'
+                    if (coinScore >= coinScore2) {
+                        let imgUrl = new URL(playerImage.src);
+                        winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                        winningPlayer = "Player 1";
+                    }
+                    else {
+                        let imgUrl2 = new URL(player2Image.src);
+                        winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                        winningPlayer = "Player 2";
+    
+                    }}
+                else {
+                     //here 'player2' died second.
+                     //if 'player2' has greater than or equal the amount of coins that 'player2' has, 'player wins'
+                     if (coinScore <= coinScore2) {
+                        let imgUrl2 = new URL(player2Image.src);
+                        winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                        winningPlayer = "Player 2";
+                    }
+                    else {
+                        let imgUrl = new URL(playerImage.src);
+                        winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                        winningPlayer = "Player 1";
+    
+                    }
+    
+    
+                }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                console.log(winnerImageSrc)
+             
+                document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
+                document.getElementById("scores").innerHTML = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2} <br><br> Score: ${score}`;
+                document.getElementById("winnerImage").src = winnerImageSrc;
+    
+    
+                }
+                else {
+                    let imgUrl = new URL(playerImage.src);
+                    winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+    
+                    
+                    document.getElementById("modalTitleWin").textContent = `You Lose!`;
+    
+                    document.getElementById("scores").innerHTML = `Coins Collected: ${coinScore} <br><br> Score: ${score}`;
+    
+                    document.getElementById("winnerImage").src = winnerImageSrc
+    
+                    
+                }
+    
+    
+                // Update scores
+    
+                // Show the results modal
+                music.pause();
+                document.getElementById("resultsModal").style.display = "block";
                 
-                document.getElementById("modalTitleWin").textContent = `You Lose!`;
-
-                document.getElementById("scores").innerHTML = `Coins Collected: ${coinScore} <br><br> Score: ${score}`;
-
-                document.getElementById("winnerImage").src =  winnerImageSrc
-
-                
-            }
-
-
-            // Update scores
-
-            // Show the results modal
-            music.pause();
-            document.getElementById("resultsModal").style.display = "block";
-            //location.reload();  // Restart the game on collision with enemy
-           
-        }
+                //location.reload();  // Restart the game on collision with enemy
+                       }
     
     
     
@@ -754,15 +784,47 @@ function checkCollisions(user) {
          
             
 
+     
             if (user === player) {
-                let imgUrl2 = new URL(player2Image.src);
-                winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
-                winningPlayer = "Player 2";
-            } else {
-                let imgUrl = new URL(playerImage.src);
-                winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
-                winningPlayer = "Player 1";
+                //here 'player' died second.
+                //if 'player' has greater than or equal the amount of coins that 'player2' has, 'player wins'
+                if (coinScore >= coinScore2) {
+                    let imgUrl = new URL(playerImage.src);
+                    winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                    winningPlayer = "Player 1";
+                }
+                else {
+                    let imgUrl2 = new URL(player2Image.src);
+                    winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                    winningPlayer = "Player 2";
+
+                }}
+            else {
+                 //here 'player2' died second.
+                 //if 'player2' has greater than or equal the amount of coins that 'player2' has, 'player wins'
+                 if (coinScore <= coinScore2) {
+                    let imgUrl2 = new URL(player2Image.src);
+                    winnerImageSrc = imgUrl2.pathname; // Extracts "/characters/5.jpg"
+                    winningPlayer = "Player 2";
+                }
+                else {
+                    let imgUrl = new URL(playerImage.src);
+                    winnerImageSrc = imgUrl.pathname; // Extracts "/characters/5.jpg"
+                    winningPlayer = "Player 1";
+
+                }
+
+
             }
+
+
+
+
+
+
+
+
+
             console.log(winnerImageSrc)
          
             document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
@@ -797,7 +859,7 @@ function checkCollisions(user) {
                 
                 
                 
-                
+                else {
                 
                    if (user == player) {
 
@@ -824,7 +886,7 @@ function checkCollisions(user) {
                     deadContainer.style.display = "none";
                 }, 1000);
         
-            }
+            }}
                 
                 
                 
