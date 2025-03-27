@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         if (twoPlayers === true) {
-            alert('twoplayers')
 
 
         if (currentPlayer === 1 && playerCharacter) {
@@ -101,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
     else {
-        alert('oneplayers')
         characterSelectionModal.style.display = 'none'; // Hide modal when both players select
         start2PlayerGame(playerCharacter, playerCharacter, theme, 1); // Start the game
 
@@ -195,11 +193,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     replay.addEventListener('click', function() {
         if  (twoPlayers === true) {
-            alert('2')
         start2PlayerGame(playerCharacter, player2Character, theme, 2); // Start the game
         }
         else {
-            alert('1')
             start2PlayerGame(playerCharacter, player2Character, theme, 1); // Start the game
 
         }

@@ -497,7 +497,6 @@ function checkCollisions(user) {
             // Update modal title to show the winner
             console.log(winnerImageSrc)
            
-                alert('a')
             document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
             document.getElementById("scores").innerHTML = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2} <br><br> Score: ${score}`;
             document.getElementById("winnerImage").src = winnerImageSrc;
@@ -600,7 +599,6 @@ function checkCollisions(user) {
             }
             console.log(winnerImageSrc)
          
-                alert('c')
             document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
             document.getElementById("scores").innerHTML = `Player 1 Coins: ${coinScore} | Player 2 Coins: ${coinScore2} <br><br> Score: ${score}`;
             document.getElementById("winnerImage").src = winnerImageSrc;
@@ -792,6 +790,9 @@ function updateScore() {
 
 function togglePause(event) {
     if (event.code === "Space") {
+
+
+        if (document.getElementById("resultsModal").style.display = "none") {
         
     
         event.preventDefault(); // Prevents page scrolling
@@ -811,6 +812,7 @@ function togglePause(event) {
 
         }
     }
+}
     }
 
     document.getElementById("resumeButton").addEventListener("click", () => {
