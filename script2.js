@@ -582,6 +582,9 @@ function checkCollisions(user) {
             user.isDead = true
 
 
+            
+
+
         
 
             if ((player.isDead && player2.isDead) || !twoPlayers) {
@@ -637,7 +640,48 @@ function checkCollisions(user) {
             document.getElementById("resultsModal").style.display = "block";
             //location.reload();  // Restart the game on collision with enemy
            
-        }}
+        }
+    
+    
+    
+    else {
+
+
+        if (user == player) {
+
+            let imgUrl = new URL(playerImage.src);
+            ImageSrc = imgUrl.pathname;
+
+        }
+        else {
+            let imgUrl2 = new URL(player2Image.src);
+            ImageSrc = imgUrl2.pathname;
+        }
+
+        let deadContainer = document.getElementById("deadContainer");
+        let deadImage = document.getElementById("deadImage");
+
+        deadImage.src = ImageSrc; // Set the correct image path
+        deadContainer.style.display = "block"; // Show message and image
+
+        slashSound.currentTime = 0; // Restart sound so it plays every time
+        slashSound.play();
+
+        // Hide the message after 2 seconds
+        setTimeout(() => {
+            deadContainer.style.display = "none";
+        }, 1000);
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    }
     }
     })
     // Collision with enemies
@@ -749,7 +793,50 @@ function checkCollisions(user) {
             document.getElementById("resultsModal").style.display = "block";
             
             //location.reload();  // Restart the game on collision with enemy
-                   }}
+                   }
+                
+                
+                
+                
+                
+                   if (user == player) {
+
+                    let imgUrl = new URL(playerImage.src);
+                    ImageSrc = imgUrl.pathname;
+        
+                }
+                else {
+                    let imgUrl2 = new URL(player2Image.src);
+                    ImageSrc = imgUrl2.pathname;
+                }
+        
+                let deadContainer = document.getElementById("deadContainer");
+                let deadImage = document.getElementById("deadImage");
+        
+                deadImage.src = ImageSrc; // Set the correct image path
+                deadContainer.style.display = "block"; // Show message and image
+        
+                slashSound.currentTime = 0; // Restart sound so it plays every time
+                slashSound.play();
+        
+                // Hide the message after 2 seconds
+                setTimeout(() => {
+                    deadContainer.style.display = "none";
+                }, 1000);
+        
+            }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
     }
 }
     

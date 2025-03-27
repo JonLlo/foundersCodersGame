@@ -338,6 +338,32 @@ button {
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
 }
 
+#deadContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none; /* Hidden by default */
+    animation: fadeInOut 2s ease-in-out;
+}
+
+#deadMessage {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 10px, black;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 10px;
+}
+
+#deadImage {
+    width: 100px; /* Adjust size */
+    height: auto;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+
 
 
 
