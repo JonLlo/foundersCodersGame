@@ -486,7 +486,7 @@ function checkCollisions(user) {
             // Update modal title to show the winner
             console.log(winnerImageSrc)
 
-            document.getElementById("modalTitleWin").textContent = `${winningPlayer}, You Win!`;
+            document.getElementById("modalTitleWin").textContent = `You Lose!`;
             document.getElementById("winnerImage").src = winnerImageSrc;
 
 
@@ -861,7 +861,6 @@ gameLoop();
 
         alert('one player!')
         document.getElementById("playerStats").style.display = "flex"; // Hide modal
-        document.getElementById("playerStats2").style.display = "flex"; // Hide modal
     
     
     
@@ -1666,13 +1665,10 @@ gameLoop();
     
         drawInvincibilityBoxes();
         updatePlayer(player, keys);
-        updatePlayer(player2, keys);
     
     
         updateInvincibility(player);
-        updateInvincibility(player2);
         updateInvincibilityCol(player);
-        updateInvincibilityCol(player2);
     
         updateEnemies();
         updateCoins();
@@ -1684,10 +1680,9 @@ gameLoop();
         updateInvincibilityBoxes();
         updateScore();
         checkCollisions(player);
-        checkCollisions(player2);
+        
     
         drawPlayer(player);
-        drawPlayer(player2);
     
         updateStats();
     
