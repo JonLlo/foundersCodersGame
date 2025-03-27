@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle the confirm button click
     confirmSelectionButton.addEventListener('click', function() {
+
+
+
+        if (twoPlayers === true) {
+
+
         if (currentPlayer === 1 && playerCharacter) {
             currentPlayer = 2; // Move to Player 2
             modalTitle.textContent = 'Player 2, pick your character'; // Title for Player 2
@@ -90,6 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
             characterSelectionModal.style.display = 'none'; // Hide modal when both players select
             start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
         }
+
+
+    }
+    else {
+
+        characterSelectionModal.style.display = 'none'; // Hide modal when both players select
+
+        start2PlayerGame(playerCharacter, playerCharacter, theme); // Start the game
+
+    }
     });
 
 
