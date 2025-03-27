@@ -94,16 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
         } else if (currentPlayer === 2 && player2Character) {
             characterSelectionModal.style.display = 'none'; // Hide modal when both players select
-            start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
+            start2PlayerGame(playerCharacter, player2Character, theme, 2); // Start the game
         }
 
 
     }
     else {
-alert('ok')
         characterSelectionModal.style.display = 'none'; // Hide modal when both players select
-
-        start2PlayerGame(playerCharacter, playerCharacter, theme); // Start the game
+        start2PlayerGame(playerCharacter, playerCharacter, theme, 1); // Start the game
 
     }
     });
