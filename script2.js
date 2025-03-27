@@ -792,7 +792,8 @@ function togglePause(event) {
     if (event.code === "Space") {
 
 
-        if (document.getElementById("resultsModal").style.display = "none") {
+        if (document.getElementById("resultsModal").style.display === "none") {
+            
         
     
         event.preventDefault(); // Prevents page scrolling
@@ -811,6 +812,9 @@ function togglePause(event) {
             music.play();  // Starts the music
 
         }
+    }
+    else {
+        
     }
 }
     }
