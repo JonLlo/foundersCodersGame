@@ -6,10 +6,15 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 const restart = document.getElementById('restartButton');
+let s = true //initialise with sound on
+let isListenerAttached = false;
+
 
 
 
 function start2PlayerGame(p1, p2, theme, n) {
+    document.getElementById("soundIcon").style.display = 'block'
+
 
 
 
@@ -68,25 +73,42 @@ let isPaused = false; // Track game state
 music.load();  // Reload the audio to apply new source
 music.volume = 0.3;
 
+if (s === true) {
 music.play();  // Starts the music
+const soundIcon = document.getElementById("soundIcon");
+
+soundIcon.classList.remove("muted");
+soundIcon.classList.add("unmuted");
+
+}
+else {
+const soundIcon = document.getElementById("soundIcon");
+soundIcon.classList.remove("unmuted");
+soundIcon.classList.add("muted");
+   
+}
 
 function toggleSound() {
     const soundIcon = document.getElementById("soundIcon");
 
     if (music.paused || music.muted) {
         music.play();  // Unmute and play
+        s = true;
         soundIcon.classList.remove("muted");
         soundIcon.classList.add("unmuted");
         soundIcon.innerHTML = '&#x1F50A;'; // Speaker icon (sound on)
     } else {
         music.pause();  // Pause the music (mute)
+        s = false;
         soundIcon.classList.remove("unmuted");
         soundIcon.classList.add("muted");
         soundIcon.innerHTML = '&#x1F507;'; // Muted speaker icon
     }
 }
-document.getElementById("soundIcon").addEventListener("click", toggleSound);
-
+if (!isListenerAttached) {
+    document.getElementById("soundIcon").addEventListener("click", toggleSound);
+    isListenerAttached = true;  // Set flag to true once the listener is added
+}
 
 document.getElementById("resumeButton").addEventListener("click", function() {
     music.play();
@@ -109,13 +131,13 @@ function togglePause(event) {
             document.getElementById("pauseModal").style.display = "flex";
 
             console.log("Game Paused");
-            music.pause();  // Starts the music
+           // music.pause();  // Starts the music
 
         } else {
             document.getElementById("pauseModal").style.display = "none";
 
             console.log("Game Resumed");
-            music.play();  // Starts the music
+           // music.play();  // Starts the music
 
         }
     }
