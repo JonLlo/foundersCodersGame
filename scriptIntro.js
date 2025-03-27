@@ -94,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     twoPlayersButton.addEventListener('click', function() {
+        twoPlayers = true;
+        gameModal.style.display = 'none'; // Show the modal
+        themeModal.style.display = 'block'; // Show the modal
+
+    })
+    onePlayerButton.addEventListener('click', function() {
+        twoPlayers = false;
         gameModal.style.display = 'none'; // Show the modal
         themeModal.style.display = 'block'; // Show the modal
 
@@ -105,7 +112,17 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCharacterGrid();
         themeModal.style.display = 'none'; // Show the modal
         characterSelectionModal.style.display = 'block'; // Show the modal
+
+        if (twoPlayers === true) {
         modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        }
+        else {
+            modalTitle.textContent = 'Pick your character'; // Title for Player 1
+         }
+
+
+
+
         currentPlayer = 1; // Set to Player 1
         confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
     });
@@ -114,7 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCharacterGrid();
         themeModal.style.display = 'none'; // Show the modal
         characterSelectionModal.style.display = 'block'; // Show the modal
-        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        if (twoPlayers === true) {
+            modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+            }
+            else {
+                modalTitle.textContent = 'Pick your character'; // Title for Player 1
+             }
         currentPlayer = 1; // Set to Player 1
         confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
     });
@@ -123,7 +145,12 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCharacterGrid();
         themeModal.style.display = 'none'; // Show the modal
         characterSelectionModal.style.display = 'block'; // Show the modal
-        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+        if (twoPlayers === true) {
+            modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
+            }
+            else {
+                modalTitle.textContent = 'Pick your character'; // Title for Player 1
+             }
         currentPlayer = 1; // Set to Player 1
         confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
     });
