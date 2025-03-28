@@ -285,6 +285,20 @@ button {
     transform: translate(-50%, -50%); /* This centers the modal within the parent container */
 
 }
+#instructOrPlayModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;  /* Ensure it's above the parent container */
+    width: 400px;  /* Fixed width */
+    height: 200px; /* Fixed height */
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+
+
+}
 
 
 
@@ -456,7 +470,7 @@ button {
         /*instrcutions*/
 
         /* Target h2 specifically inside the instructions modal */
-        #instructionsModal {
+        #instructionsModal, #instructionsModalBeforeGame {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -475,7 +489,7 @@ button {
         
        
         
-        #instructionsModal h2 {
+        #instructionsModal h2, #instructionsModalBeforeGame h2 {
             padding-top: 30px;
 
             font-size: 1.5rem;
@@ -483,29 +497,29 @@ button {
             margin-bottom: 20px;
         }
         
-        #instructionsModal .category {
+        #instructionsModal .category, #instructionsModalBeforeGame .category  {
             margin-bottom: 20px;
         }
         
-        #instructionsModal .category h3 {
+        #instructionsModal .category h3, #instructionsModalBeforeGame .category h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
         
-        #instructionsModal .icons {
+        #instructionsModal .icons, #instructionsModalBeforeGame .icons {
             display: flex;
             justify-content: center; /* Center the icons horizontally */
             align-items: center;     /* Center the icons vertically */
             margin-bottom: 10px;
         }
         
-        #instructionsModal .icons img {
+        #instructionsModal .icons img,  #instructionsModalBeforeGame .icons img {
             width: 50px;  /* Adjust the size of the icons */
             height: 50px;
             margin: 0 10px; /* Add some space between the icons */
         }
         
-        #instructionsModal .description {
+        #instructionsModal .description, #instructionsModalBeforeGame .description {
             font-size: 0.8rem;
             color: #333;
             text-align: center;  /* Center the text horizontally */
@@ -515,7 +529,7 @@ button {
         }
         
    
-        #backButton {
+        #backButton, #backButtonBeforeGame  {
             position: sticky; /* Make the header stick to the top */
             top: 10px;
             left: 10px;

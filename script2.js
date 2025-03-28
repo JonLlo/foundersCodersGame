@@ -14,6 +14,8 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
+    let p = 1
+
     document.getElementById("soundIcon").style.display = 'block'
 
 
@@ -123,10 +125,11 @@ document.getElementById("instructionsButton").addEventListener("click", function
 
 });
 document.getElementById("backButton").addEventListener("click", function() {
+    if (p === 1) {
     document.getElementById("pauseModal").style.display = "block";
     document.getElementById("instructionsModal").style.display = "none";
 
-
+    }
 });
 
 

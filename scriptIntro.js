@@ -94,18 +94,77 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
         } else if (currentPlayer === 2 && player2Character) {
             characterSelectionModal.style.display = 'none'; // Hide modal when both players select
-            start2PlayerGame(playerCharacter, player2Character, theme, 2); // Start the game
+            document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
+
+
+
+
+
+
+            //start2PlayerGame(playerCharacter, player2Character, theme, 2); // Start the game
         }
 
 
     }
     else {
         characterSelectionModal.style.display = 'none'; // Hide modal when both players select
-        start2PlayerGame(playerCharacter, playerCharacter, theme, 1); // Start the game
+
+
+
+        document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
+
+
+
+
+
+
+
+        //start2PlayerGame(playerCharacter, playerCharacter, theme, 1); // Start the game
 
     }
     });
 
+    /*
+    <div id="instructOrPlayModal" style="display: none;">
+        <div class="modal-content">
+            <button id="PlayButton">Play</button>
+            <button id="instructionsButton">Instructions</button>
+            <button id="mainMenuButton">Main Menu</button>
+    
+        </div>
+    </div>
+    */
+
+    document.getElementById('PlayButton').addEventListener('click', function() {
+        document.getElementById('instructOrPlayModal').style.display = 'none'; // Hide modal when both players select
+        if (twoPlayers) {
+            start2PlayerGame(playerCharacter, playerCharacter, theme, 2);
+        }
+        else {
+            start2PlayerGame(playerCharacter, playerCharacter, theme, 1);
+        }
+    });
+    document.getElementById('instructionsButtonBeforeGame').addEventListener('click', function() {
+  
+        
+        document.getElementById('instructOrPlayModal').style.display = 'none'; // Hide modal when both players select
+        document.getElementById('instructionsModalBeforeGame').style.display = 'block'; // Hide modal when both players select
+    
+  
+    });
+    document.getElementById('backButtonBeforeGame').addEventListener('click', function() {
+  
+        
+        document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
+        document.getElementById('instructionsModalBeforeGame').style.display = 'none'; // Hide modal when both players select
+    
+  
+    });
+    
+
+
+
+    
 
     twoPlayersButton.addEventListener('click', function() {
         twoPlayers = true;
