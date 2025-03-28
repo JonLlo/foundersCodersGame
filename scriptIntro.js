@@ -3,6 +3,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+   
+
     // Function to toggle pause
 
 

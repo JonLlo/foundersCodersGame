@@ -13,9 +13,10 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
-    const soundIcon = document.getElementById("soundIcon");
-            soundIcon.classList.add("unmuted");
-        soundIcon.innerHTML = '&#x1F50A;'; // Speaker icon (sound on)
+
+
+
+
 
     ended = false;
     let p = 1
@@ -86,8 +87,11 @@ const music = document.getElementById("backgroundMusic");
 let isPaused = false; // Track game state
 music.load();  // Reload the audio to apply new source
 music.volume = 0.5;
+alert(soundIcon.innerHTML)
 
-if (s === true) {
+if (soundIcon.innerHTML === 'MUSIC'
+) {
+    alert('yah')
 music.play();  // Starts the music
 const soundIcon = document.getElementById("soundIcon");
 
@@ -110,13 +114,13 @@ function toggleSound() {
         s = true;
         soundIcon.classList.remove("muted");
         soundIcon.classList.add("unmuted");
-        soundIcon.innerHTML = '&#x1F50A;'; // Speaker icon (sound on)
+        soundIcon.innerHTML = 'MUSIC'; // Speaker icon (sound on)
     } else {
         music.pause();  // Pause the music (mute)
         s = false;
         soundIcon.classList.remove("unmuted");
         soundIcon.classList.add("muted");
-        soundIcon.innerHTML = '&#x1F507;'; // Muted speaker icon
+        soundIcon.innerHTML = 'NO MUSIC'; // Muted speaker icon
     }
 }
 if (!isListenerAttached) {
