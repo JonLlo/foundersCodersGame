@@ -81,7 +81,7 @@ const music = document.getElementById("backgroundMusic");
 
 let isPaused = false; // Track game state
 music.load();  // Reload the audio to apply new source
-music.volume = 0.3;
+music.volume = 0.5;
 
 if (s === true) {
 music.play();  // Starts the music
@@ -185,6 +185,10 @@ function togglePause(event) {
     document.getElementById("mainMenuButton").addEventListener("click", () => {
     window.location.href = "index.html"; 
 }); 
+document.getElementById("playDiffChar").addEventListener("click", () => {
+    window.location.href = "index.html"; 
+}); 
+
 
 
 
