@@ -276,7 +276,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;  /* Ensure it's above the parent container */
+    z-index: 999999;  /* Ensure it's above the parent container */
     width: 400px;  /* Fixed width */
     height: 200px; /* Fixed height */
     position: absolute;
@@ -354,7 +354,7 @@ button {
     text-align: center;
     display: none; /* Hidden by default */
     animation: fadeInOut 2s ease-in-out;
-        z-index: 999999999999999999999999;
+        z-index: 9999;
 
 }
 
@@ -365,14 +365,14 @@ button {
     text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8); 
     font-family: 'Arial Black', sans-serif;
     margin-bottom: 10px;
-    z-index: 999999999999999999999999;
+    z-index: 9999;
 }
 
 #lifeLostImage, #gameOverImage {
     width: 100px; /* Adjust size */
     height: auto;
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
-    z-index: 999999999999999999999999;
+    z-index: 9999;
 }
 #invincibleContainer {
     position: absolute;
@@ -549,3 +549,77 @@ button {
             justify-content: flex-start; /* Align the button to the left */
         }
         
+
+        /* Controls Section Styling */
+.controls {
+    width: 100%;  /* Ensure it spans the full width */
+    padding: 15px 0;
+    margin-top: 20px;
+    border-radius: 10px;  /* Rounded corners */
+}
+
+.controls h3 {
+    font-size: 1.5rem;  /* Larger header size */
+    margin-bottom: 10px;
+    text-align: center;  /* Center the header */
+    font-weight: 600;  /* Bold for emphasis */
+}
+
+.controls .icons {
+    display: flex;
+    justify-content: center;  /* Center the icons horizontally */
+    margin-bottom: 10px;
+}
+
+.controls .icons img {
+    width: 40px;  /* Adjust icon size */
+    height: 40px;
+    margin: 0 10px;  /* Space between icons */
+}
+
+.controls h1 {
+    font-size: 1rem;  /* Slightly smaller than the header */
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 5px;  /* Spacing between lines */
+}
+
+.controls .description {
+    font-size: 0.9rem;
+    text-align: center;  /* Center the description text */
+    line-height: 1.5;  /* Improved line spacing for readability */
+    margin: 0 auto;
+    width: 80%;  /* Ensure the description doesn't stretch too wide */
+}
+#intro {
+    font-size: 0.9rem;  /* Smaller text size */
+    color: black;  /* Dark text color for readability */
+    line-height: 1.4;  /* Adjusted line height for better spacing */
+    text-align: center;  /* Center the text */
+    padding: 10px;  /* Padding around the text */
+    width: 80%;  /* Limit width to make text easier to read */
+    max-width: 600px;  /* Prevents it from being too wide */
+    margin-left: auto;
+    margin-right: auto;  /* Center it horizontally */
+}
+
+
+
+#intro strong {
+    font-weight: bold;  /* Bold important text */
+    color: #1e90ff;  /* Accent color for key parts */
+}
+
+#intro ul {
+    list-style-type: none;  /* Add bullet points */
+    margin-left: 20px;      /* Indentation for bullets */
+    font-size: 0.9rem;      /* Adjusted font size */
+    color: black   ;        /* Text color */
+    line-height: 1.6;       /* Spacing between list items */
+    text-align: center;       /* Align the text to the left */
+}
+
+#intro li {
+    margin-bottom: 10px;    /* Space between each bullet point */
+}

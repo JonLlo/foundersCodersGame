@@ -135,7 +135,8 @@ document.getElementById("backButton").addEventListener("click", function() {
 
 
 function togglePause(event) {
-    if (event.code === "Space") {
+    if (event.code === "Space");
+     {
 
 
         if (document.getElementById("resultsModal").style.display === "none") {
@@ -685,6 +686,9 @@ function checkCollisions(user) {
     
                 // Show the results modal
                 music.pause();
+                   // Disable the pause functionality while the results modal is shown
+
+               
                 gameOverSound.currentTime = 1; // Restart sound so it plays every time
                 gameOverSound.play();
 
@@ -884,7 +888,7 @@ function checkCollisions(user) {
 
             // Show the results modal
             music.pause();
-
+                   // Disable the pause functionality while the results modal is shown
             gameOverSound.currentTime = 1; // Restart sound so it plays every time
             gameOverSound.play();
 // Show the game over container
@@ -897,6 +901,7 @@ function checkCollisions(user) {
                 
                 // Show the results modal
                 document.getElementById("resultsModal").style.display = "block";
+
             }, 2000); // 2000 milliseconds = 2 seconds
             
             //location.reload();  // Restart the game on collision with enemy
