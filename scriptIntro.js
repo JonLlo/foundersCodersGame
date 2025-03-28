@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             modalTitle.textContent = 'Player 2, pick your character'; // Title for Player 2
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
         } else if (currentPlayer === 2 && player2Character) {
-            characterSelectionModal.style.display = 'none'; // Hide modal when both players select
+            characterSelectionModal.style.display = 'none'; // Hide modal when both pladyers select
             document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
 
 
