@@ -1,4 +1,6 @@
 let gameRunning = true;
+const gameOverSound = new Audio("sound/gameOver.mp3")
+gameOverSound.volume = 0.5;
 const coinSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 coinSound.volume = 0.5; // Default volume (can be adjusted)
 const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
@@ -669,7 +671,21 @@ function checkCollisions(user) {
     
                 // Show the results modal
                 music.pause();
-                document.getElementById("resultsModal").style.display = "block";
+                gameOverSound.currentTime = 1; // Restart sound so it plays every time
+                gameOverSound.play();
+
+
+                document.getElementById("gameOverContainer").style.display = "block";
+
+                // After 2 seconds, hide the game over container and show the results modal
+                setTimeout(function() {
+                    // Hide the game over container
+                    document.getElementById("gameOverContainer").style.display = "none";
+                    
+                    // Show the results modal
+                    document.getElementById("resultsModal").style.display = "block";
+                }, 2000); // 2000 milliseconds = 2 seconds
+
                 
                 //location.reload();  // Restart the game on collision with enemy
                        }
@@ -854,7 +870,20 @@ function checkCollisions(user) {
 
             // Show the results modal
             music.pause();
-            document.getElementById("resultsModal").style.display = "block";
+
+            gameOverSound.currentTime = 1; // Restart sound so it plays every time
+            gameOverSound.play();
+// Show the game over container
+            document.getElementById("gameOverContainer").style.display = "block";
+
+            // After 2 seconds, hide the game over container and show the results modal
+            setTimeout(function() {
+                // Hide the game over container
+                document.getElementById("gameOverContainer").style.display = "none";
+                
+                // Show the results modal
+                document.getElementById("resultsModal").style.display = "block";
+            }, 2000); // 2000 milliseconds = 2 seconds
             
             //location.reload();  // Restart the game on collision with enemy
                    }

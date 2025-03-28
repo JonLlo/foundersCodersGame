@@ -331,7 +331,7 @@ button {
 }
 
 
-#lifeLostContainer {
+#lifeLostContainer, #gameOverContainer {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -339,21 +339,25 @@ button {
     text-align: center;
     display: none; /* Hidden by default */
     animation: fadeInOut 2s ease-in-out;
+        z-index: 999999999999999999999999;
+
 }
 
-#lifeLostMessage {
+#lifeLostMessage, #gameOverMessage {
     font-size: 3rem;
     font-weight: bold;
     color: red;
     text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8); 
     font-family: 'Arial Black', sans-serif;
     margin-bottom: 10px;
+    z-index: 999999999999999999999999;
 }
 
-#lifeLostImage {
+#lifeLostImage, #gameOverImage {
     width: 100px; /* Adjust size */
     height: auto;
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+    z-index: 999999999999999999999999;
 }
 #invincibleContainer {
     position: absolute;
@@ -437,4 +441,10 @@ button {
         }
         .unmuted {
             color: #000; /* Black for unmuted state */
+        }
+
+
+        #gameOverImage {
+            width: 300px; /* Adjust the width */
+            height: auto; /* Maintain the aspect ratio */
         }
