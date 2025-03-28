@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (currentPlayer === 2) {
             img.classList.add('selected-red');
             selectedImage2 = img; // Store reference to the selected image for Player 2
+            alert(character)
             player2Character = character;
         }
 
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('PlayButton').addEventListener('click', function() {
         document.getElementById('instructOrPlayModal').style.display = 'none'; // Hide modal when both players select
         if (twoPlayers) {
-            start2PlayerGame(playerCharacter, playerCharacter, theme, 2);
+            start2PlayerGame(playerCharacter, player2Character, theme, 2);
         }
         else {
             start2PlayerGame(playerCharacter, playerCharacter, theme, 1);

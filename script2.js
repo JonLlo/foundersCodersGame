@@ -471,10 +471,11 @@ function updatePlayer(user, keys) {
                 user.velocityY += user.gravity;
             }
         }
+        
 
     } 
     // Player 2 controls (W, A, S, D keys)
-    else if (user = player) {
+    else if (user === player) {
         // Player 2 movement (WASD keys)
         if (keys["KeyA"]) user.velocityX = -user.speed;  // A - Move left
         else if (keys["KeyD"]) user.velocityX = user.speed;  // D - Move right
@@ -491,6 +492,23 @@ function updatePlayer(user, keys) {
             }
         }
     }
+        
+
+    // Prevent player from going off the left and right sides of the canvas
+    if (user.x < 0) {
+        user.x = 0;  // Clamp to the left edge
+    } else if (user.x + user.width > canvas.width) {
+        user.x = canvas.width - user.width;  // Clamp to the right edge
+    }
+
+    // Prevent player from going off the top and bottom of the canvas
+    if (user.y < 0) {
+        user.y = 0;  // Clamp to the top edge
+    } else if (user.y + user.height > canvas.height) {
+        user.y = canvas.height - user.height;  // Clamp to the bottom edge
+    }
+        
+
 
     // Recharge jetpack if not using it
     if (!user.isJetpacking && user.jetpackFuel < user.maxJetpackFuel) {
