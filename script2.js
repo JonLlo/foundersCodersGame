@@ -13,7 +13,6 @@ let isListenerAttached = false;
 
 
 
-
 function start2PlayerGame(p1, p2, theme, n) {
     alert('TESTIdNG')
     document.getElementById("soundIcon").style.display = 'block'
