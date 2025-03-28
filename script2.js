@@ -122,6 +122,12 @@ document.getElementById("instructionsButton").addEventListener("click", function
 
 
 });
+document.getElementById("backButton").addEventListener("click", function() {
+    document.getElementById("pauseModal").style.display = "block";
+    document.getElementById("instructionsModal").style.display = "none";
+
+
+});
 
 
 
