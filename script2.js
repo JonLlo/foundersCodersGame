@@ -117,6 +117,11 @@ if (!isListenerAttached) {
     isListenerAttached = true;  // Set flag to true once the listener is added
 }
 
+
+
+
+
+
 document.getElementById("resumeButton").addEventListener("click", function() {
 });
 document.getElementById("instructionsButton").addEventListener("click", function() {
