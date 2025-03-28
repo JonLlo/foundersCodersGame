@@ -13,6 +13,10 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
+    const soundIcon = document.getElementById("soundIcon");
+            soundIcon.classList.add("unmuted");
+        soundIcon.innerHTML = '&#x1F50A;'; // Speaker icon (sound on)
+
     ended = false;
     let p = 1
 
