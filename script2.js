@@ -13,6 +13,8 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
+    document.getElementById("soundIcon").style.display = "flex";
+
 
 
 
@@ -166,12 +168,15 @@ function togglePause(event) {
     
         if (isPaused) {
             document.getElementById("pauseModal").style.display = "flex";
+            document.getElementById("soundIcon").style.display = "none";
 
             console.log("Game Paused");
            // music.pause();  // Starts the music
 
         } else {
             document.getElementById("pauseModal").style.display = "none";
+            document.getElementById("soundIcon").style.display = "flex";
+
 
             console.log("Game Resumed");
            // music.play();  // Starts the music
@@ -744,6 +749,8 @@ function checkCollisions(user) {
                 // After 2 seconds, hide the game over container and show the results modal
                 setTimeout(function() {
                     // Hide the game over container
+                    document.getElementById("soundIcon").style.display = "none";
+
                     document.getElementById("gameOverContainer").style.display = "none";
                     
                     // Show the results modal
