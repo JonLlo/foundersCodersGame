@@ -8,7 +8,6 @@ slashSound.volume = 0.5; // Default volume (can be adjusted)
 const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 const restart = document.getElementById('restartButton');
-let s = true //initialise with sound on
 let isListenerAttached = false;
 
 
@@ -45,7 +44,7 @@ function start2PlayerGame(p1, p2, theme, n) {
 
     const canvas = document.getElementById("gameCanvas"); // Use existing canvas
     const ctx = canvas.getContext("2d");
-    const music = document.getElementById("backgroundMusic");
+
     const mp3Source = document.getElementById("tune"); // Source for MP3
 
 // Handle theme change
@@ -71,9 +70,13 @@ if (theme === "normal") {
 
     // Set initial volume
 
-// Toggle sound (mute/unmute)
+//////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC///////////////////
 
 
+
+let s = true //initialise with sound on
+
+const music = document.getElementById("backgroundMusic");
 
 
 let isPaused = false; // Track game state
@@ -119,6 +122,7 @@ if (!isListenerAttached) {
 
 
 
+//////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC///////////////////
 
 
 
