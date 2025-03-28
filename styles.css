@@ -123,7 +123,7 @@ body {
     top: 3%;  /* Centers it vertically */
     left: 8%;  /* Centers it horizontally */
     transform: translateX(-50%);
-    border-radius: 20px;
+    border-radius: 5px; /* Rounded corners */
     z-index: 10;
   }
 
@@ -134,7 +134,7 @@ body {
     margin-bottom: 10px;  /* Space between each player stats box */
     background-color: blue;
     width: 20%;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 2px solid black;
 
 }
@@ -207,13 +207,13 @@ body {
   }
   .score-info {
     padding: 10px; /* Padding around text */
-    border-radius: 10px; /* Optional: Round the corners */
+    border-radius: 5px; /* Optional: Round the corners */
     display: flex;
     align-items: center;
     padding-left: 10px;
     margin-bottom: 10px;  /* Space between each player stats box */
     background-color: blue;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 2px solid black;
 }
 
@@ -322,6 +322,7 @@ button {
     width: 80px;
     height: 80px;
     border: 2px solid black;
+    border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
 }
@@ -341,8 +342,8 @@ button {
 
 /* Red border for Player 2 */
 .characterChoice.selected-red {
-    border: 3px solid red; /* Adds a red border around Player 2's selected character */
-    box-shadow: 0 0 10px red; /* Optional: adds a glowing effect */
+    border: 3px solid purple; /* Adds a red border around Player 2's selected character */
+    box-shadow: 0 0 10px purple; /* Optional: adds a glowing effect */
 }
 
 
@@ -478,13 +479,12 @@ button {
             width: 300px;  /* Fixed width */
             height: 300px; /* Fixed height */
             position: absolute;
-            border-radius: 20px;
+            border-radius: 5px;
             top: 45%;
             left: 50%;
             transform: translate(-50%, -50%); /* This centers the modal within the parent container */
             overflow-y: auto; /* Enable vertical scrolling */
-            border: 2px solid blue;
-            border-radius: 20px;
+            border: 2px;
         }
         
        
@@ -555,7 +555,7 @@ button {
     width: 100%;  /* Ensure it spans the full width */
     padding: 15px 0;
     margin-top: 20px;
-    border-radius: 10px;  /* Rounded corners */
+    border-radius: 5px;  /* Rounded corners */
 }
 
 .controls h3 {
@@ -608,7 +608,6 @@ button {
 
 #intro strong {
     font-weight: bold;  /* Bold important text */
-    color: #1e90ff;  /* Accent color for key parts */
 }
 
 #intro ul {
@@ -621,7 +620,7 @@ button {
 }
 
 #intro li {
-    margin-bottom: 10px;    /* Space between each bullet point */
+    margin-bottom: 10px;    /* Space between each bullet point */ 
 }
 
 

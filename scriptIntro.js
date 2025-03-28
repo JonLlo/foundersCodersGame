@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (currentPlayer === 2) {
             img.classList.add('selected-red');
             selectedImage2 = img; // Store reference to the selected image for Player 2
-            alert(character)
+           // alert(character)
             player2Character = character;
         }
 

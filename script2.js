@@ -89,11 +89,11 @@ const music = document.getElementById("backgroundMusic");
 let isPaused = false; // Track game state
 music.load();  // Reload the audio to apply new source
 music.volume = 0.5;
-alert(soundIcon.innerHTML)
+//alert(soundIcon.innerHTML)
 
 if (soundIcon.innerHTML === '♫'
 ) {
-    alert('yah')
+   // alert('yah')
 music.play();  // Starts the music
 const soundIcon = document.getElementById("soundIcon");
 
@@ -192,6 +192,7 @@ function togglePause(event) {
     document.getElementById("resumeButton").addEventListener("click", () => {
     isPaused = false;
     document.getElementById("pauseModal").style.display = "none";
+    document.getElementById("soundIcon").style.display = "flex";
     console.log("Game Resumed");
 });
 
