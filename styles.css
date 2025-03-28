@@ -9,7 +9,7 @@ body {
 
 #canvasContainer {
     border: 2px solid black;
-    background-color: lightblue;
+    background-image:  url("icons/canvas/sunset.jpg");
     margin: auto;
     border: 1px solid #000;
     width: 800px;  /* Match the canvas width */
@@ -40,6 +40,7 @@ body {
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Ensures the image doesn't repeat */}
 #gameCanvas.normal {
+    background-image:  url("icons/canvas/sunset.jpg");
     border: 2px solid black;
     background-color: lightblue;
     display: block;
@@ -448,3 +449,72 @@ button {
             width: 300px; /* Adjust the width */
             height: auto; /* Maintain the aspect ratio */
         }
+
+
+
+        /*instrcutions*/
+
+        /* Target h2 specifically inside the instructions modal */
+        #instructionsModal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;  /* Ensure it's above the parent container */
+            width: 300px;  /* Fixed width */
+            height: 300px; /* Fixed height */
+            position: absolute;
+            border-radius: 20px;
+            border: 2px solid #000;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+            overflow: hidden; /* Ensure no overflow outside the modal */
+        }
+        
+        #instructionsModal .modal-content {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* Enable vertical scrolling */
+
+
+        }
+        
+        #instructionsModal h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #instructionsModal .category {
+            margin-bottom: 20px;
+        }
+        
+        #instructionsModal .category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        #instructionsModal .icons {
+            display: flex;
+            justify-content: center; /* Center the icons horizontally */
+            align-items: center;     /* Center the icons vertically */
+            margin-bottom: 10px;
+        }
+        
+        #instructionsModal .icons img {
+            width: 50px;  /* Adjust the size of the icons */
+            height: 50px;
+            margin: 0 10px; /* Add some space between the icons */
+        }
+        
+        #instructionsModal .description {
+            font-size: 0.8rem;
+            color: #333;
+            text-align: center;  /* Center the text horizontally */
+            max-width: 50%;      /* Allow text to wrap within the container */
+            word-wrap: break-word; /* Allow long words to break into the next line if necessary */
+            line-height: 1.5;    /* Increase line height for better readability */
+            margin: 0 auto;      /* Center the description block horizontally */
+        }
+        
+   

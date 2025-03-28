@@ -14,7 +14,6 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
-    alert('TESTIdNG')
     document.getElementById("soundIcon").style.display = 'block'
 
 
@@ -116,6 +115,12 @@ if (!isListenerAttached) {
 }
 
 document.getElementById("resumeButton").addEventListener("click", function() {
+});
+document.getElementById("instructionsButton").addEventListener("click", function() {
+    document.getElementById("pauseModal").style.display = "none";
+    document.getElementById("instructionsModal").style.display = "block";
+
+
 });
 
 
@@ -343,7 +348,7 @@ if (theme === "western") {
     monsterImage.src = "icons/monsters/blue-monster.png";
     enemyImage.src = "icons/enemies/cactus.png";
     coinImage.src = 'icons/coin/silver.png';
-    shieldImage.src = 'shield-icon.png'; 
+    shieldImage.src = 'icons/shields/cocktail.png'; 
     scoreColor = "black"
     coinScoreColor = "black"
     livesScoreColor = "black"
@@ -358,10 +363,10 @@ if (theme === "western") {
     livesScoreColor = "purple"
 
 } else {
-    monsterImage.src = 'icons/monsters/monster-icon.png';  // Path to the monster image
+    monsterImage.src = 'icons/monsters/blue-monster.png';  // Path to the monster image
     enemyImage.src = "icons/enemies/enemy-icon.png"; // Default enemy image
     coinImage.src = 'coin-icon.png';
-    shieldImage.src = 'shield-icon.png'; 
+    shieldImage.src = 'icons/shields/cocktail.png'; 
     scoreColor = "black"
     coinScoreColor = "red"
     livesScoreColor = "purple"
