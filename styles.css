@@ -623,3 +623,13 @@ button {
 #intro li {
     margin-bottom: 10px;    /* Space between each bullet point */
 }
+
+
+#soundIcon {
+    transform: translate(-50%, -20%); /* This centers the modal within the parent container */
+    font-size: 0.9rem;
+    border: 2px solid black;
+    color: black;  /* Dark text color for readability */
+
+    
+}

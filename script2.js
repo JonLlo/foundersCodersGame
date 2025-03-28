@@ -89,7 +89,7 @@ music.load();  // Reload the audio to apply new source
 music.volume = 0.5;
 alert(soundIcon.innerHTML)
 
-if (soundIcon.innerHTML === 'MUSIC'
+if (soundIcon.innerHTML === '♫'
 ) {
     alert('yah')
 music.play();  // Starts the music
@@ -113,14 +113,14 @@ function toggleSound() {
         music.play();  // Unmute and play
         s = true;
         soundIcon.classList.remove("muted");
-        soundIcon.classList.add("unmuted");
-        soundIcon.innerHTML = 'MUSIC'; // Speaker icon (sound on)
+        soundIcon.classList.add("unmuted"); 
+        soundIcon.innerHTML = '♫'; // Speaker icon (sound on)
     } else {
         music.pause();  // Pause the music (mute)
         s = false;
         soundIcon.classList.remove("unmuted");
         soundIcon.classList.add("muted");
-        soundIcon.innerHTML = 'NO MUSIC'; // Muted speaker icon
+        soundIcon.innerHTML = 'OFF'; // Muted speaker icon
     }
 }
 if (!isListenerAttached) {
