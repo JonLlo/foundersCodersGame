@@ -14,6 +14,7 @@ let isListenerAttached = false;
 
 
 function start2PlayerGame(p1, p2, theme, n) {
+    ended = false;
     let p = 1
 
     document.getElementById("soundIcon").style.display = 'block'
@@ -135,7 +136,7 @@ document.getElementById("backButton").addEventListener("click", function() {
 
 
 function togglePause(event) {
-    if (event.code === "Space");
+    if (event.code === "Space" && ended === false)
      {
 
 
@@ -610,6 +611,9 @@ function checkCollisions(user) {
      if ((player.isDead && player2.isDead) || !twoPlayers) {
 
                 gameRunning = false;
+                ended = true;
+                document.getElementById("pauseModal").style.display = "none";
+
     
                 // Determine which player lost
                             // Determine which player lost
@@ -691,6 +695,9 @@ function checkCollisions(user) {
                
                 gameOverSound.currentTime = 1; // Restart sound so it plays every time
                 gameOverSound.play();
+
+                //alert('game over');
+
 
 
                 document.getElementById("gameOverContainer").style.display = "block";
@@ -812,6 +819,9 @@ function checkCollisions(user) {
             if ((player.isDead && player2.isDead) || !twoPlayers) {
 
             gameRunning = false;
+            ended = true;
+            document.getElementById("pauseModal").style.display = "none";
+
 
             // Determine which player lost
                         // Determine which player lost
@@ -888,9 +898,15 @@ function checkCollisions(user) {
 
             // Show the results modal
             music.pause();
-                   // Disable the pause functionality while the results modal is shown
+                   // Disable 
+                
             gameOverSound.currentTime = 1; // Restart sound so it plays every time
             gameOverSound.play();
+            
+            //alert('game over');
+
+
+
 // Show the game over container
             document.getElementById("gameOverContainer").style.display = "block";
 
