@@ -126,7 +126,7 @@ body {
     z-index: 10;
   }
 
-  #playerStats, #playerStats2 {
+  #playerStats, #playerStats2, #playerStats1Player {
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -138,12 +138,12 @@ body {
 
 }
 
-.player-info {
+.player-info, .score-info {
     display: flex;
     align-items: center;
 }
 
-#playerImage, #player2Image {
+#playerImage, #player2Image, #playerImage1Player {
     width: 50px;  /* Set the size of the player image */
     height: 50px;
     margin-right: 10px;  /* Space between the icon and the info */
@@ -178,6 +178,48 @@ body {
     
   }
 
+  #playerStats1Player {
+    position: absolute;
+    top: 10px;  /* This is the initial position */
+    right: 620px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    z-index: 10;
+
+
+    
+  }
+
+
+  
+  #scoreStats {
+
+    position: absolute;
+    top: 10px;  /* This is the initial position */
+    right: 340px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    z-index: 10;
+    
+  }
+  .score-info {
+    padding: 10px; /* Padding around text */
+    border-radius: 10px; /* Optional: Round the corners */
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin-bottom: 10px;  /* Space between each player stats box */
+    background-color: blue;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+  #scoreStats .info {
+    text-align: center; /* Align the text inside .info div */
+    z-index: 9999200;
+}
 
 
 button {

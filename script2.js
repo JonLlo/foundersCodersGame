@@ -18,19 +18,22 @@ function start2PlayerGame(p1, p2, theme, n) {
 
 
 
-    document.getElementById("playerStats").style.display = "flex"; // show modal
     if (n === 2) {
         twoPlayers = true;
+        document.getElementById("playerStats").style.display = "flex"; // show modal
 
+    document.getElementById("scoreStats").style.display = "flex"; // show modal
     document.getElementById("playerStats2").style.display = "flex"; // show modal
     }
     if (n === 1) {
+        document.getElementById("playerStats1Player").style.display = "flex"; // show modal
+
         twoPlayers = false;
 
     }
     if (!(n === 1 || n === 2))
      {
-        alert('error!')
+        //alert('error!')
      }
 
 
@@ -111,7 +114,6 @@ if (!isListenerAttached) {
 }
 
 document.getElementById("resumeButton").addEventListener("click", function() {
-    music.play();
 });
 
 
@@ -1064,15 +1066,28 @@ function updateScore() {
     function updateStats() {
 
         // Update Player 1 Stats
-        document.getElementById("scoreNumber").textContent = "Score: " + score;
+        document.getElementById("scoreNumberMid").innerHTML = "Score: <br>" + score;
+        document.getElementById("scoreNumber1Player").textContent = "Score: " + score;
+
         document.getElementById("scoreCoin").textContent = "Coins: " + coinScore;
+        document.getElementById("scoreCoin1Player").textContent = "Coins: " + coinScore;
+
         document.getElementById("lives").textContent = "Lives: " + player.lives;
+        document.getElementById("lives1Player").textContent = "Lives: " + player.lives;
+
 
         document.getElementById("invincibleDisplay").textContent = player.isInvincible ? "Invinc: " + Math.floor(player.invincibleTime / 30) : "Invinc: 0";
+        document.getElementById("invincibleDisplay1Player").textContent = player.isInvincible ? "Invinc: " + Math.floor(player.invincibleTime / 30) : "Invinc: 0";
+
         document.getElementById("playerImage").src = playerImage.src; // Set the player image
+        document.getElementById("playerImage1Player").src = playerImage.src; // Set the player image
+
     
-        // Update Player 2 Stats
-        document.getElementById("scoreNumber2").textContent = "Score: " + score2;
+        // Update Pl
+        document.getElementById("scoreCoin2").textContent = "Coins: " + coinScore2;
+        //document.getElementById("scoreNumber2").textContent = "Score: " + score2;
+
+
         document.getElementById("scoreCoin2").textContent = "Coins: " + coinScore2;
         document.getElementById("lives2").textContent = "Lives: " + player2.lives;
 
