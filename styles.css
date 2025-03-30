@@ -1,7 +1,9 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    overflow: hidden;  /* Disables both vertical and horizontal scrolling */
+    overflow-x: hidden !important;  /* Correct syntax */
+    overflow-y: hidden !important;  /* Correct syntax */
+
 
 }
 
@@ -645,3 +647,60 @@ button {
     color: black;  /* Dark text color for readability */
     
 }
+
+
+
+@media (max-width: 51em) and (min-width: 45.00001em)  {
+
+   
+
+
+
+
+    body {
+        transform: scale(0.8) 
+   
+    }
+    /* … */
+  }
+
+  @media (max-width: 45em) and (min-width: 39.00001em)  {
+
+    #monsterBosh, #bottomInfo {
+        transform: translateX(97px);
+        
+
+
+    }
+
+
+
+
+    body {
+        transform: scale(0.77) translateX(-97px);
+   
+    }
+    /* … */
+  }
+
+
+
+
+
+  @media (max-width: 39em) {
+
+
+    body {
+        transform: scale(0.38) translateX(-229px) translateY(-430px);
+  
+   
+    }
+  
+
+    #monsterBosh,  #bottomInfo {
+        transform: translateX(229px);
+       
+
+    }
+    /* … */
+  }
