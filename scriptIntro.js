@@ -2,6 +2,20 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('yes').addEventListener('click', function() {
+        s = true
+        document.getElementById('musicModal').style.display = 'none'; // Hide modal when both players select
+        document.getElementById('instructOrPlayModal').style.display = 'block'
+
+    })
+    document.getElementById('no').addEventListener('click', function() {
+        s = false
+        document.getElementById('musicModal').style.display = 'none'; // Hide modal when both players select
+        document.getElementById('instructOrPlayModal').style.display = 'block'
+
+    })
+
+
 
    
 
@@ -97,7 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmSelectionButton.style.display = 'none'; // Hide confirm button until Player 2 selects
         } else if (currentPlayer === 2 && player2Character) {
             characterSelectionModal.style.display = 'none'; // Hide modal when both pladyers select
-            document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
+
+            
+            document.getElementById('musicModal').style.display = 'block'; // Hide modal when both players select
+
+           // document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
 
 
 
@@ -112,9 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
     else {
         characterSelectionModal.style.display = 'none'; // Hide modal when both players select
 
+        document.getElementById('musicModal').style.display = 'block'; // Hide modal when both players select
 
 
-        document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
+       // document.getElementById('instructOrPlayModal').style.display = 'block'; // Hide modal when both players select
 
 
 
@@ -126,6 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
     });
+ 
+
+
 
     /*
     <div id="instructOrPlayModal" style="display: none;">

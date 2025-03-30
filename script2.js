@@ -81,7 +81,6 @@ if (theme === "normal") {
 
 
 
-let s = true //initialise with sound on
 
 const music = document.getElementById("backgroundMusic");
 
@@ -94,7 +93,16 @@ music.volume = 0.5;
 if (soundIcon.innerHTML === '♫'
 ) {
    // alert('yah')
-music.play();  // Starts the music
+if (s === true) {
+music.play();}
+else {
+    document.getElementById("soundIcon").innerHTML = 'OFF';
+
+
+
+}
+
+// Starts the music
 const soundIcon = document.getElementById("soundIcon");
 
 soundIcon.classList.remove("muted");
@@ -107,6 +115,7 @@ soundIcon.classList.remove("unmuted");
 soundIcon.classList.add("muted");
    
 }
+
 
 function toggleSound() {
     const soundIcon = document.getElementById("soundIcon");
@@ -168,12 +177,17 @@ function togglePause(event) {
     
         if (isPaused) {
             document.getElementById("pauseModal").style.display = "flex";
+            music.pause();
             document.getElementById("soundIcon").style.display = "none";
 
             console.log("Game Paused");
            // music.pause();  // Starts the music
 
         } else {
+            if (s === true) {
+                music.play()
+            }
+
             document.getElementById("pauseModal").style.display = "none";
             document.getElementById("soundIcon").style.display = "flex";
 
