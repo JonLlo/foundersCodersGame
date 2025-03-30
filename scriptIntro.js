@@ -149,16 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    /*
-    <div id="instructOrPlayModal" style="display: none;">
-        <div class="modal-content">
-            <button id="PlayButton">Play</button>
-            <button id="instructionsButton">Instructions</button>
-            <button id="mainMenuButton">Main Menu</button>
-    
-        </div>
-    </div>
-    */
 
     document.getElementById('PlayButton').addEventListener('click', function() {
         document.getElementById('instructOrPlayModal').style.display = 'none'; // Hide modal when both players select
@@ -257,19 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-/*
-    // Display the character selection modal for 2 players
-    twoPlayersButton.addEventListener('click', function() {
-        displayCharacterGrid();
-        gameModal.style.display = 'none'; // Show the modal
-        characterSelectionModal.style.display = 'block'; // Show the modal
-        modalTitle.textContent = 'Player 1, pick your character'; // Title for Player 1
-        currentPlayer = 1; // Set to Player 1
-        confirmSelectionButton.style.display = 'none'; // Hide confirm button initially
-    });
 
-
-  */
 
     const restart = document.getElementById('restartButton');
     const replay = document.getElementById('playAgain');
@@ -291,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     restart.addEventListener('click', function() {
-    start2PlayerGame(playerCharacter, player2Character, theme); // Start the game
+    start2PlayerGame(playerCharacter, player2Character, theme); // Start the game,
 
 
 

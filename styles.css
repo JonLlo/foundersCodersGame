@@ -1,8 +1,10 @@
 body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden !important;  /* Correct syntax */
-    overflow-y: hidden !important;  /* Correct syntax */
+	text-align: center;
+	font-family: Arial, sans-serif;
+	overflow-x: hidden !important;
+	/* Correct syntax */
+	overflow-y: hidden !important;
+	/* Correct syntax */
 
 
 }
@@ -10,697 +12,857 @@ body {
 /* Style for the canvas */
 
 #canvasContainer {
-    border: 2px solid black;
-    background-image:  url("icons/canvas/sunset.jpg");
-    margin: auto;
-    border: 1px solid #000;
-    width: 800px;  /* Match the canvas width */
-    height: 400px; /* Match the canvas height */
-    display: inline-block; /* This allows the container to behave similarly to the canvas */
-    padding: 0;
-    margin: 0;
-    position: relative;
+	border: 2px solid black;
+	background-image: url("icons/canvas/sunset.jpg");
+	margin: auto;
+	border: 1px solid #000;
+	width: 800px;
+	/* Match the canvas width */
+	height: 400px;
+	/* Match the canvas height */
+	display: inline-block;
+	/* This allows the container to behave similarly to the canvas */
+	padding: 0;
+	margin: 0;
+	position: relative;
 
 }
 
 
 #gameCanvas.western {
-    background-image:  url("icons/canvas/wildWest.png");
-    display: block;
-    margin: auto;
-    border: 1px solid #000;
-    background-size: cover; /* Ensures the image fully covers the element */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+	background-image: url("icons/canvas/wildWest.png");
+	display: block;
+	margin: auto;
+	border: 1px solid #000;
+	background-size: cover;
+	/* Ensures the image fully covers the element */
+	background-position: center;
+	/* Centers the image */
+	background-repeat: no-repeat;
+	/* Ensures the image doesn't repeat */
 }
+
 #gameCanvas.sea {
-    background-image: url("icons/canvas/sea.jpg");
-    display: block;
-    margin: auto;
-    border: 1px solid #000;
-    background-size: cover; /* Ensures the image fully covers the element */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Ensures the image doesn't repeat */}
-#gameCanvas.normal {
-    background-image:  url("icons/canvas/sunset.jpg");
-    border: 2px solid black;
-    background-color: lightblue;
-    display: block;
-    margin: auto;
-    border: 1px solid #000;
-    background-size: cover; /* Ensures the image fully covers the element */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Ensures the image doesn't repeat */}
-
-
-
-
-
-
-
- #resultsModal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;  /* Ensure it's above the parent container */
-    width: 300px;  /* Fixed width */
-    height: 8px; /* Fixed height */
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+	background-image: url("icons/canvas/sea.jpg");
+	display: block;
+	margin: auto;
+	border: 1px solid #000;
+	background-size: cover;
+	/* Ensures the image fully covers the element */
+	background-position: center;
+	/* Centers the image */
+	background-repeat: no-repeat;
+	/* Ensures the image doesn't repeat */
 }
+
+#gameCanvas.normal {
+	background-image: url("icons/canvas/sunset.jpg");
+	border: 2px solid black;
+	background-color: lightblue;
+	display: block;
+	margin: auto;
+	border: 1px solid #000;
+	background-size: cover;
+	/* Ensures the image fully covers the element */
+	background-position: center;
+	/* Centers the image */
+	background-repeat: no-repeat;
+	/* Ensures the image doesn't repeat */
+}
+
+
+#resultsModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* Ensure it's above the parent container */
+	width: 300px;
+	/* Fixed width */
+	height: 8px;
+	/* Fixed height */
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* This centers the modal within the parent container */
+}
+
 /* Image inside the modal */
 #resultsModal img {
-    width: 50px; /* Adjust image size (better than 20px) */
-    height: auto; /* Keep aspect ratio */
-    margin-bottom: 15px; /* Space below the image */
+	width: 50px;
+	/* Adjust image size (better than 20px) */
+	height: auto;
+	/* Keep aspect ratio */
+	margin-bottom: 15px;
+	/* Space below the image */
 }
 
 /* Buttons inside the modal */
 #resultsModal button {
-    padding: 8px 16px; /* Smaller padding */
-    font-size: 12px;  /* Smaller font */
-    margin-top: 10px; /* Space between buttons */
-    margin-right: 5px; /* Space between buttons */
-    cursor: pointer;  /* Show pointer on hover */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #4CAF50; /* Green background for "Play Again" */
-    color: white;
-    border: none;
+	padding: 8px 16px;
+	/* Smaller padding */
+	font-size: 12px;
+	/* Smaller font */
+	margin-top: 10px;
+	/* Space between buttons */
+	margin-right: 5px;
+	/* Space between buttons */
+	cursor: pointer;
+	/* Show pointer on hover */
+	border-radius: 5px;
+	/* Rounded corners */
+	background-color: #4CAF50;
+	/* Green background for "Play Again" */
+	color: white;
+	border: none;
 }
 
 #resultsModal button:hover {
-    background-color: #45a049; /* Slightly darker on hover */
+	background-color: #45a049;
+	/* Slightly darker on hover */
 }
 
 /* Adjusting the text content */
 #resultsModal p {
-    font-size: 14px;  /* Smaller font size for text */
-    text-align: center; /* Center the text */
-    margin: 10px 0;  /* Space around text */
+	font-size: 14px;
+	/* Smaller font size for text */
+	text-align: center;
+	/* Center the text */
+	margin: 10px 0;
+	/* Space around text */
 }
 
-#gameModal, #themeModal  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;  /* Ensure it's above the parent container */
-    width: 400px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+#gameModal,
+#themeModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* Ensure it's above the parent container */
+	width: 400px;
+	/* Fixed width */
+	height: 200px;
+	/* Fixed height */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* This centers the modal within the parent container */
 }
 
 #scoreBackground {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 130px; /* Fixed width */
-    height: 120px; /* Fixed height */
-    position: absolute;
-    top: 3%;  /* Centers it vertically */
-    left: 8%;  /* Centers it horizontally */
-    transform: translateX(-50%);
-    border-radius: 5px; /* Rounded corners */
-    z-index: 10;
-  }
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 130px;
+	/* Fixed width */
+	height: 120px;
+	/* Fixed height */
+	position: absolute;
+	top: 3%;
+	/* Centers it vertically */
+	left: 8%;
+	/* Centers it horizontally */
+	transform: translateX(-50%);
+	border-radius: 5px;
+	/* Rounded corners */
+	z-index: 10;
+}
 
-  #playerStats, #playerStats2, #playerStats1Player {
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    margin-bottom: 10px;  /* Space between each player stats box */
-    background-color: blue;
-    width: 20%;
-    border-radius: 5px;
-    border: 2px solid black;
+#playerStats,
+#playerStats2,
+#playerStats1Player {
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	margin-bottom: 10px;
+	/* Space between each player stats box */
+	background-color: blue;
+	width: 20%;
+	border-radius: 5px;
+	border: 2px solid black;
 
 }
 
-.player-info, .score-info {
-    display: flex;
-    align-items: center;
+.player-info,
+.score-info {
+	display: flex;
+	align-items: center;
 }
 
-#playerImage, #player2Image, #playerImage1Player {
-    width: 50px;  /* Set the size of the player image */
-    height: 50px;
-    margin-right: 10px;  /* Space between the icon and the info */
+#playerImage,
+#player2Image,
+#playerImage1Player {
+	width: 50px;
+	/* Set the size of the player image */
+	height: 50px;
+	margin-right: 10px;
+	/* Space between the icon and the info */
 }
 
 .info p {
-    margin: 0;
-    padding: 2px 0;
-    font-size: 14px;  /* Optional: Adjust font size */
-        font-family: Arial, sans-serif;  /* Optional: Change font if desired */
-        color: white;
+	margin: 0;
+	padding: 2px 0;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	color: white;
 
 }
+
 #playerStats {
-    position: absolute;
-    top: 10px;  /* This is the initial position */
-    right: 620px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    z-index: 10;
-    
-  }
-  #playerStats2 {
-    position: absolute;
-    top: 10px;  /* This is the initial position */
-    right: 20px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    z-index: 10;
-    
-  }
+	position: absolute;
+	top: 10px;
+	/* This is the initial position */
+	right: 620px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	z-index: 10;
 
-  #playerStats1Player {
-    position: absolute;
-    top: 10px;  /* This is the initial position */
-    right: 620px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    z-index: 10;
-
-
-    
-  }
-
-
-  
-  #scoreStats {
-
-    position: absolute;
-    top: 10px;  /* This is the initial position */
-    right: 340px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    z-index: 10;
-    
-  }
-  .score-info {
-    padding: 10px; /* Padding around text */
-    border-radius: 5px; /* Optional: Round the corners */
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    margin-bottom: 10px;  /* Space between each player stats box */
-    background-color: blue;
-    border-radius: 5px;
-    border: 2px solid black;
 }
 
-  #scoreStats .info {
-    text-align: center; /* Align the text inside .info div */
-    z-index: 9999200;
+#playerStats2 {
+	position: absolute;
+	top: 10px;
+	/* This is the initial position */
+	right: 20px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	z-index: 10;
+
+}
+
+#playerStats1Player {
+	position: absolute;
+	top: 10px;
+	/* This is the initial position */
+	right: 620px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	z-index: 10;
+
+
+}
+
+
+#scoreStats {
+
+	position: absolute;
+	top: 10px;
+	/* This is the initial position */
+	right: 340px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	z-index: 10;
+
+}
+
+.score-info {
+	padding: 10px;
+	/* Padding around text */
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	margin-bottom: 10px;
+	/* Space between each player stats box */
+	background-color: blue;
+	border-radius: 5px;
+	border: 2px solid black;
+}
+
+#scoreStats .info {
+	text-align: center;
+	/* Align the text inside .info div */
+	z-index: 9999200;
 }
 
 
 button {
-    padding: 8px 16px; /* Smaller padding */
-    font-size: 12px;  /* Smaller font */
-    margin-top: 10px; /* Space between buttons */
-    margin-right: 5px; /* Space between buttons */
-    cursor: pointer;  /* Show pointer on hover */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #4CAF50; /* Green background for "Play Again" */
-    color: white;
-    border: none;
+	padding: 8px 16px;
+	/* Smaller padding */
+	font-size: 12px;
+	/* Smaller font */
+	margin-top: 10px;
+	/* Space between buttons */
+	margin-right: 5px;
+	/* Space between buttons */
+	cursor: pointer;
+	/* Show pointer on hover */
+	border-radius: 5px;
+	/* Rounded corners */
+	background-color: #4CAF50;
+	/* Green background for "Play Again" */
+	color: white;
+	border: none;
 }
 
 #characterSelectionModal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;  /* Ensure it's above the parent container */
-    width: 400px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -90%); /* This centers the modal within the parent container */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* Ensure it's above the parent container */
+	width: 400px;
+	/* Fixed width */
+	height: 200px;
+	/* Fixed height */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -90%);
+	/* This centers the modal within the parent container */
 
 
 }
+
 #confirmSelectionButton {
-    align-self: center; 
-    align-content: center;  
-    justify-content: center;
-    transform: translateX(138px);
-    align-items: center;        /* Center the button horizontally */
+	align-self: center;
+	align-content: center;
+	justify-content: center;
+	transform: translateX(138px);
+	align-items: center;
+	/* Center the button horizontally */
 
 
 }
+
 .modal-content {
-    position: fixed;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+	position: fixed;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	text-align: center;
 }
 
 button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
+	margin: 10px;
+	padding: 10px 20px;
+	font-size: 18px;
+	cursor: pointer;
 }
+
 #pauseModal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999;  /* Ensure it's above the parent container */
-    width: 400px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999999;
+	/* Ensure it's above the parent container */
+	width: 400px;
+	/* Fixed width */
+	height: 200px;
+	/* Fixed height */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* This centers the modal within the parent container */
 
 }
 
 #musicModal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999;  /* Ensure it's above the parent container */
-    width: 400px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-30%, -50%); /* This centers the modal within the parent container */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999999;
+	/* Ensure it's above the parent container */
+	width: 400px;
+	/* Fixed width */
+	height: 200px;
+	/* Fixed height */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-28%, -50%);
+	/* This centers the modal within the parent container */
 
 }
+
 #instructOrPlayModal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;  /* Ensure it's above the parent container */
-    width: 400px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    position: absolute;
-    top: 60%;
-    left: 60%;
-    transform: translate(-50%, -50%); /* This centers the modal within the parent container */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* Ensure it's above the parent container */
+	width: 400px;
+	/* Fixed width */
+	height: 200px;
+	/* Fixed height */
+	position: absolute;
+	top: 60%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	/* This centers the modal within the parent container */
 
 
 }
-
-
-
 
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
+	padding: 10px 20px;
+	margin: 10px;
+	font-size: 16px;
+	cursor: pointer;
 }
 
 /* Style the character ction grid */
 #characterGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
 }
 
 .characterChoice {
-    width: 80px;
-    height: 80px;
-    border: 2px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s;
+	width: 80px;
+	height: 80px;
+	border: 2px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: transform 0.2s;
 }
 
 .characterChoice:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
-
-
 
 
 /* Green border for Player 1 */
 .characterChoice.selected-green {
-    border: 3px solid green; /* Adds a green border around Player 1's selected character */
-    box-shadow: 0 0 10px green; /* Optional: adds a glowing effect */
+	border: 3px solid green;
+	/* Adds a green border around Player 1's selected character */
+	box-shadow: 0 0 10px green;
 }
 
 /* Red border for Player 2 */
 .characterChoice.selected-red {
-    border: 3px solid purple; /* Adds a red border around Player 2's selected character */
-    box-shadow: 0 0 10px purple; /* Optional: adds a glowing effect */
+	border: 3px solid purple;
+	/* Adds a red border around Player 2's selected character */
+	box-shadow: 0 0 10px purple;
 }
 
 
-#lifeLostContainer, #gameOverContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none; /* Hidden by default */
-    animation: fadeInOut 2s ease-in-out;
-        z-index: 9999;
+#lifeLostContainer,
+#gameOverContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	display: none;
+	/* Hidden by default */
+	animation: fadeInOut 2s ease-in-out;
+	z-index: 9999;
 
 }
 
-#lifeLostMessage, #gameOverMessage {
-    font-size: 3rem;
-    font-weight: bold;
-    color: red;
-    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8); 
-    font-family: 'Arial Black', sans-serif;
-    margin-bottom: 10px;
-    z-index: 9999;
+#lifeLostMessage,
+#gameOverMessage {
+	font-size: 3rem;
+	font-weight: bold;
+	color: red;
+	text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8);
+	font-family: 'Arial Black', sans-serif;
+	margin-bottom: 10px;
+	z-index: 9999;
 }
 
-#lifeLostImage, #gameOverImage {
-    width: 100px; /* Adjust size */
-    height: auto;
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
-    z-index: 9999;
+#lifeLostImage,
+#gameOverImage {
+	width: 100px;
+	/* Adjust size */
+	height: auto;
+	filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+	z-index: 9999;
 }
+
 #invincibleContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none; /* Hidden by default */
-    animation: fadeInOut 2s ease-in-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	display: none;
+	/* Hidden by default */
+	animation: fadeInOut 2s ease-in-out;
 }
 
 #invincibleMessage {
-    font-size: 3rem;
-    font-weight: bold;
-    color: yellow;
-    text-shadow: 2px 2px 10px, black;
-    font-family: 'Arial Black', sans-serif;
-    margin-bottom: 10px;
+	font-size: 3rem;
+	font-weight: bold;
+	color: yellow;
+	text-shadow: 2px 2px 10px, black;
+	font-family: 'Arial Black', sans-serif;
+	margin-bottom: 10px;
 }
 
 #invincibleImage {
-    width: 100px; /* Adjust size */
-    height: auto;
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+	width: 100px;
+	/* Adjust size */
+	height: auto;
+	filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 #deadContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none; /* Hidden by default */
-    animation: fadeInOut 2s ease-in-out;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	display: none;
+	/* Hidden by default */
+	animation: fadeInOut 2s ease-in-out;
 }
 
 #deadMessage {
-    font-size: 3rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 10px, black;
-    font-family: 'Arial Black', sans-serif;
-    margin-bottom: 10px;
+	font-size: 3rem;
+	font-weight: bold;
+	color: white;
+	text-shadow: 2px 2px 10px, black;
+	font-family: 'Arial Black', sans-serif;
+	margin-bottom: 10px;
 }
 
 #deadImage {
-    width: 100px; /* Adjust size */
-    height: auto;
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+	width: 100px;
+	/* Adjust size */
+	height: auto;
+	filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
 }
-
-
-
-
-
-
-
 
 
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -55%); }
-    10% { opacity: 1; transform: translate(-50%, -50%); }
-    90% { opacity: 1; transform: translate(-50%, -50%); }
-    100% { opacity: 0; transform: translate(-50%, -45%); }
+	0% {
+		opacity: 0;
+		transform: translate(-50%, -55%);
+	}
+
+	10% {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	90% {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate(-50%, -45%);
+	}
 }
 
 
-        /* Position the sound icon in the top left corner */
-        #soundIcon {
-            position: absolute;
-            top: 355px;
-            left: 50px;
-            font-size: 30px;
-            cursor: pointer;
-            z-index: 1000;  /* Ensure the icon is above other elements */
-        }
-
-        /* Optionally, style for muted and unmuted icons */
-        .muted {
-            color: #777; /* Gray for muted state */
-        }
-        .unmuted {
-            color: #000; /* Black for unmuted state */
-        }
+/* Position the sound icon in the top left corner */
+#soundIcon {
+	position: absolute;
+	top: 355px;
+	left: 50px;
+	font-size: 30px;
+	cursor: pointer;
+	z-index: 1000;
+	/* Ensure the icon is above other elements */
+}
 
 
-        #gameOverImage {
-            width: 300px; /* Adjust the width */
-            height: auto; /* Maintain the aspect ratio */
-        }
+.muted {
+	color: #777;
+	/* Gray for muted state */
+}
+
+.unmuted {
+	color: #000;
+	/* Black for unmuted state */
+}
 
 
+#gameOverImage {
+	width: 300px;
+	/* Adjust the width */
+	height: auto;
+	/* Maintain the aspect ratio */
+}
 
-        /*instrcutions*/
-        /*instrcutions*/
 
-        /* Target h2 specifically inside the instructions modal */
-        #instructionsModal, #instructionsModalBeforeGame {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;  /* Ensure it's above the parent container */
-            width: 300px;  /* Fixed width */
-            height: 300px; /* Fixed height */
-            position: absolute;
-            border-radius: 5px;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* This centers the modal within the parent container */
-            overflow-y: auto; /* Enable vertical scrolling */
-            border: 2px;
-        }
-        
-       
-        
-        #instructionsModal h2, #instructionsModalBeforeGame h2 {
-            padding-top: 30px;
+/*instrcutions*/
+/*instrcutions*/
 
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        #instructionsModal .category, #instructionsModalBeforeGame .category  {
-            margin-bottom: 20px;
-        }
-        
-        #instructionsModal .category h3, #instructionsModalBeforeGame .category h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        #instructionsModal .icons, #instructionsModalBeforeGame .icons {
-            display: flex;
-            justify-content: center; /* Center the icons horizontally */
-            align-items: center;     /* Center the icons vertically */
-            margin-bottom: 10px;
-        }
-        
-        #instructionsModal .icons img,  #instructionsModalBeforeGame .icons img {
-            width: 50px;  /* Adjust the size of the icons */
-            height: 50px;
-            margin: 0 10px; /* Add some space between the icons */
-        }
-        
-        #instructionsModal .description, #instructionsModalBeforeGame .description {
-            font-size: 0.8rem;
-            color: #333;
-            text-align: center;  /* Center the text horizontally */
-            word-wrap: break-word; /* Allow long words to break into the next line if necessary */
-            line-height: 1.5;    /* Increase line height for better readability */
-            margin: 0 auto;      /* Center the description block horizontally */
-        }
-        
-   
-        #backButton, #backButtonBeforeGame  {
-            position: sticky; /* Make the header stick to the top */
-            top: 10px;
-            left: 10px;
-            padding: 10px 20px;
-            color: white;  /* White text */
-            border: none;  /* Remove default border */
-            border-radius: 5px;  /* Rounded corners */
-            font-size: 1rem;  /* Button text size */
-            cursor: pointer;  /* Pointer cursor on hover */
-        }
-        .modal-header-instructions    {
-            width: 100%; /* Make the header span the full width */
-            position: sticky; /* Make the header stick to the top */
-            top: 0; /* Stick to the top of the modal */
-            z-index: 1; /* Make sure the button stays above the scrollable content */
-            display: flex;
-            justify-content: flex-start; /* Align the button to the left */
-        }
-        
+/* Target h2 specifically inside the instructions modal */
+#instructionsModal,
+#instructionsModalBeforeGame {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	/* Ensure it's above the parent container */
+	width: 300px;
+	/* Fixed width */
+	height: 300px;
+	/* Fixed height */
+	position: absolute;
+	border-radius: 5px;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* This centers the modal within the parent container */
+	overflow-y: auto;
+	/* Enable vertical scrolling */
+	border: 2px;
+}
 
-        /* Controls Section Styling */
+
+#instructionsModal h2,
+#instructionsModalBeforeGame h2 {
+	padding-top: 30px;
+
+	font-size: 1.5rem;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#instructionsModal .category,
+#instructionsModalBeforeGame .category {
+	margin-bottom: 20px;
+}
+
+#instructionsModal .category h3,
+#instructionsModalBeforeGame .category h3 {
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+
+#instructionsModal .icons,
+#instructionsModalBeforeGame .icons {
+	display: flex;
+	justify-content: center;
+	/* Center the icons horizontally */
+	align-items: center;
+	/* Center the icons vertically */
+	margin-bottom: 10px;
+}
+
+#instructionsModal .icons img,
+#instructionsModalBeforeGame .icons img {
+	width: 50px;
+	/* Adjust the size of the icons */
+	height: 50px;
+	margin: 0 10px;
+	/* Add some space between the icons */
+}
+
+#instructionsModal .description,
+#instructionsModalBeforeGame .description {
+	font-size: 0.8rem;
+	color: #333;
+	text-align: center;
+	/* Center the text horizontally */
+	word-wrap: break-word;
+	/* Allow long words to break into the next line if necessary */
+	line-height: 1.5;
+	/* Increase line height for better readability */
+	margin: 0 auto;
+	/* Center the description block horizontally */
+}
+
+
+#backButton,
+#backButtonBeforeGame {
+	position: sticky;
+	/* Make the header stick to the top */
+	top: 10px;
+	left: 10px;
+	padding: 10px 20px;
+	color: white;
+	/* White text */
+	border: none;
+	/* Remove default border */
+	border-radius: 5px;
+	/* Rounded corners */
+	font-size: 1rem;
+	/* Button text size */
+	cursor: pointer;
+	/* Pointer cursor on hover */
+}
+
+.modal-header-instructions {
+	width: 100%;
+	/* Make the header span the full width */
+	position: sticky;
+	/* Make the header stick to the top */
+	top: 0;
+	/* Stick to the top of the modal */
+	z-index: 1;
+	/* Make sure the button stays above the scrollable content */
+	display: flex;
+	justify-content: flex-start;
+	/* Align the button to the left */
+}
+
+
+/* Controls Section Styling */
 .controls {
-    width: 100%;  /* Ensure it spans the full width */
-    padding: 15px 0;
-    margin-top: 20px;
-    border-radius: 5px;  /* Rounded corners */
+	width: 100%;
+	/* Ensure it spans the full width */
+	padding: 15px 0;
+	margin-top: 20px;
+	border-radius: 5px;
+	/* Rounded corners */
 }
 
 .controls h3 {
-    font-size: 1.5rem;  /* Larger header size */
-    margin-bottom: 10px;
-    text-align: center;  /* Center the header */
-    font-weight: 600;  /* Bold for emphasis */
+	font-size: 1.5rem;
+	/* Larger header size */
+	margin-bottom: 10px;
+	text-align: center;
+	/* Center the header */
+	font-weight: 600;
+	/* Bold for emphasis */
 }
 
 .controls .icons {
-    display: flex;
-    justify-content: center;  /* Center the icons horizontally */
-    margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+	/* Center the icons horizontally */
+	margin-bottom: 10px;
 }
 
 .controls .icons img {
-    width: 40px;  /* Adjust icon size */
-    height: 40px;
-    margin: 0 10px;  /* Space between icons */
+	width: 40px;
+	/* Adjust icon size */
+	height: 40px;
+	margin: 0 10px;
+	/* Space between icons */
 }
 
 .controls h1 {
-    font-size: 1rem;  /* Slightly smaller than the header */
-    color: #333;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 5px;  /* Spacing between lines */
+	font-size: 1rem;
+	/* Slightly smaller than the header */
+	color: #333;
+	text-align: center;
+	font-weight: 500;
+	margin-bottom: 5px;
+	/* Spacing between lines */
 }
 
 .controls .description {
-    font-size: 0.9rem;
-    text-align: center;  /* Center the description text */
-    line-height: 1.5;  /* Improved line spacing for readability */
-    margin: 0 auto;
-    width: 80%;  /* Ensure the description doesn't stretch too wide */
-}
-#intro {
-    font-size: 0.9rem;  /* Smaller text size */
-    color: black;  /* Dark text color for readability */
-    line-height: 1.4;  /* Adjusted line height for better spacing */
-    text-align: center;  /* Center the text */
-    padding: 10px;  /* Padding around the text */
-    width: 80%;  /* Limit width to make text easier to read */
-    max-width: 600px;  /* Prevents it from being too wide */
-    margin-left: auto;
-    margin-right: auto;  /* Center it horizontally */
+	font-size: 0.9rem;
+	text-align: center;
+	/* Center the description text */
+	line-height: 1.5;
+	/* Improved line spacing for readability */
+	margin: 0 auto;
+	width: 80%;
+	/* Ensure the description doesn't stretch too wide */
 }
 
+#intro {
+	font-size: 0.9rem;
+	/* Smaller text size */
+	color: black;
+	/* Dark text color for readability */
+	line-height: 1.4;
+	/* Adjusted line height for better spacing */
+	text-align: center;
+	/* Center the text */
+	padding: 10px;
+	/* Padding around the text */
+	width: 80%;
+	/* Limit width to make text easier to read */
+	max-width: 600px;
+	/* Prevents it from being too wide */
+	margin-left: auto;
+	margin-right: auto;
+	/* Center it horizontally */
+}
 
 
 #intro strong {
-    font-weight: bold;  /* Bold important text */
+	font-weight: bold;
+	/* Bold important text */
 }
 
 #intro ul {
-    list-style-type: none;  /* Add bullet points */
-    margin-left: 20px;      /* Indentation for bullets */
-    font-size: 0.9rem;      /* Adjusted font size */
-    color: black   ;        /* Text color */
-    line-height: 1.6;       /* Spacing between list items */
-    text-align: center;       /* Align the text to the left */
+	list-style-type: none;
+	/* Add bullet points */
+	margin-left: 20px;
+	/* Indentation for bullets */
+	font-size: 0.9rem;
+	/* Adjusted font size */
+	color: black;
+	/* Text color */
+	line-height: 1.6;
+	/* Spacing between list items */
+	text-align: center;
+	/* Align the text to the left */
 }
 
 #intro li {
-    margin-bottom: 10px;    /* Space between each bullet point */ 
+	margin-bottom: 10px;
+	/* Space between each bullet point */
 }
 
 
 #soundIcon {
-    transform: translate(-50%, -20%); /* This centers the modal within the parent container */
-    font-size: 0.9rem;
-    border: 2px solid black;
-    color: black;  /* Dark text color for readability */
-    
+	transform: translate(-50%, -20%);
+	/* This centers the modal within the parent container */
+	font-size: 0.9rem;
+	border: 2px solid black;
+	color: black;
+	/* Dark text color for readability */
+
 }
 
 
-
-@media (max-width: 51em) and (min-width: 45.00001em)  {
-
-   
+@media (max-width: 51em) and (min-width: 45.00001em) {
 
 
+	body {
+		transform: scale(0.8)
+	}
+
+	/* … */
+}
+
+@media (max-width: 45em) and (min-width: 39.00001em) {
+
+	#monsterBosh,
+	#bottomInfo {
+		transform: translateX(97px);
 
 
-    body {
-        transform: scale(0.8) 
-   
-    }
-    /* … */
-  }
-
-  @media (max-width: 45em) and (min-width: 39.00001em)  {
-
-    #monsterBosh, #bottomInfo {
-        transform: translateX(97px);
-        
+	}
 
 
-    }
+	body {
+		transform: scale(0.77) translateX(-97px);
+
+	}
+
+	/* … */
+}
 
 
+@media (max-width: 39em) {
 
 
-    body {
-        transform: scale(0.77) translateX(-97px);
-   
-    }
-    /* … */
-  }
+	body {
+		transform: scale(0.38) translateX(-229px) translateY(-430px);
 
 
+	}
 
 
+	#monsterBosh,
+	#bottomInfo {
+		transform: translateX(229px);
 
-  @media (max-width: 39em) {
 
+	}
 
-    body {
-        transform: scale(0.38) translateX(-229px) translateY(-430px);
-  
-   
-    }
-  
-
-    #monsterBosh,  #bottomInfo {
-        transform: translateX(229px);
-       
-
-    }
-    /* … */
-  }
+	/* … */
+}

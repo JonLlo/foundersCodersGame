@@ -1,11 +1,11 @@
 let gameRunning = true;
 const gameOverSound = new Audio("sound/gameOver.mp3")
 gameOverSound.volume = 0.5;
-const coinSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
+const coinSound = new Audio("sound/shield.wav"); 
 coinSound.volume = 0.5; // Default volume (can be adjusted)
-const slashSound = new Audio("sound/slash.wav"); // Replace with your coin sound file
+const slashSound = new Audio("sound/slash.wav"); 
 slashSound.volume = 0.5; // Default volume (can be adjusted)
-const shieldSound = new Audio("sound/shield.wav"); // Replace with your coin sound file
+const shieldSound = new Audio("sound/shield.wav"); 
 shieldSound.volume = 0.5; // Default volume (can be adjusted)
 const restart = document.getElementById('restartButton');
 let isListenerAttached = false;
@@ -77,8 +77,7 @@ if (theme === "normal") {
 
     // Set initial volume
 
-//////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC///////////////////
-
+//music
 
 
 
@@ -141,8 +140,7 @@ if (!isListenerAttached) {
 
 
 
-//////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC/////////////////////////////MUSIC///////////////////
-
+//music ended
 
 
 document.getElementById("resumeButton").addEventListener("click", function() {
@@ -795,7 +793,7 @@ function checkCollisions(user) {
         let deadContainer = document.getElementById("deadContainer");
         let deadImage = document.getElementById("deadImage");
 
-        deadImage.src = ImageSrc; // Set the correct image path
+        deadImage.src = ImageSrc; // 
         deadContainer.style.display = "block"; // Show message and image
 
         slashSound.currentTime = 0; // Restart sound so it plays every time
@@ -1286,6 +1284,8 @@ gameLoop();
 
 
     
+
+
 
 
 

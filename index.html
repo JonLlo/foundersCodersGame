@@ -1,341 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Bosh</title>
 
-    <link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster Bosh</title>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <h1 id="monsterBosh">Monster Bosh</h1>
-    <!--  div id="InvincibleContainer">
-        <div id="lifeLostMessage">Invincible</div>
-        <img id="InvincibleImage" src="" alt="Invincible Icon">
+  <h1 id="monsterBosh">Monster Bosh</h1>
+
+
+
+  <container id="canvasContainer">
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+    <div id="playerStats" style="display: none;">
+      <div class="player-info">
+        <img id="playerImage" src="" alt="Player Image" />
+        <div class="info">
+          <!--<p id="scoreNumber2">Score: 0</p>-->
+          <p id="scoreCoin">Coins: 0</p>
+          <p id="lives">Lives: 3</p>
+          <p id="invincibleDisplay">Invinc: 0</p>
+        </div>
+      </div>
     </div>
-    -->
-
-
-
-    <container id="canvasContainer">
-        <canvas id="gameCanvas" width="800" height="400"></canvas>
-
-        <div id="playerStats" style="display: none;">
-            <div class="player-info">
-                <img id="playerImage" src="" alt="Player Image" />
-                <div class="info">
-                     <!--<p id="scoreNumber2">Score: 0</p>-->
-                         <p id="scoreCoin">Coins: 0</p>
-                    <p id="lives">Lives: 3</p>
-                    <p id="invincibleDisplay">Invinc: 0</p>
-                </div>
-            </div>
+    <div id="playerStats1Player" style="display: none;">
+      <div class="player-info">
+        <img id="playerImage1Player" src="" alt="Player Image" />
+        <div class="info">
+          <p id="scoreNumber1Player">Score: 0</p>
+          <p id="scoreCoin1Player">Coins: 0</p>
+          <p id="lives1Player">Lives: 3</p>
+          <p id="invincibleDisplay1Player">Invinc: 0</p>
         </div>
-        <div id="playerStats1Player" style="display: none;">
-            <div class="player-info">
-                <img id="playerImage1Player" src="" alt="Player Image" />
-                <div class="info">
-                        <p id="scoreNumber1Player">Score: 0</p>
-                         <p id="scoreCoin1Player">Coins: 0</p>
-                    <p id="lives1Player">Lives: 3</p>
-                    <p id="invincibleDisplay1Player">Invinc: 0</p>
-                </div>
-            </div>
-        </div>
-        
-        <div id="playerStats2" style="display: none;">
-            <div class="player-info">
-                <img id="player2Image" src="" alt="Player 2 Image" />
-                <div class="info">
-                    <!--<p id="scoreNumber2">Score: 0</p>-->
-                    <p id="scoreCoin2">Coins: 0</p>
-                    <p id="lives2">Lives: 3</p>
-                    <p id="invincibleDisplay2">Invinc: 0</p>
-                </div>
-            </div>
-        </div>
-        <div id="scoreStats" style="display: none;">
-            <div class="score-info">
-                <div class="info">
-                    <p id="scoreNumberMid">Score: 0</p>
-                </div>
-            </div>
-        </div>
-        <button id="soundIcon" class="unmuted" style="display: none">♫</button> <!-- Speaker icon -->
+      </div>
+    </div>
 
-        <audio id="backgroundMusic" loop>
-            <source id="tune" src="" type="audio/mp3">
-            <source src="background-music.ogg" type="audio/ogg">
-            Your browser does not support the audio element.
-          </audio>
+    <div id="playerStats2" style="display: none;">
+      <div class="player-info">
+        <img id="player2Image" src="" alt="Player 2 Image" />
+        <div class="info">
+          <!--<p id="scoreNumber2">Score: 0</p>-->
+          <p id="scoreCoin2">Coins: 0</p>
+          <p id="lives2">Lives: 3</p>
+          <p id="invincibleDisplay2">Invinc: 0</p>
+        </div>
+      </div>
+    </div>
+    <div id="scoreStats" style="display: none;">
+      <div class="score-info">
+        <div class="info">
+          <p id="scoreNumberMid">Score: 0</p>
+        </div>
+      </div>
+    </div>
+    <button id="soundIcon" class="unmuted" style="display: none">♫</button> <!-- Speaker icon -->
+
+    <audio id="backgroundMusic" loop>
+      <source id="tune" src="" type="audio/mp3">
+      <source src="background-music.ogg" type="audio/ogg">
+      Your browser does not support the audio element.
+    </audio>
 
 
     <div id="gameModal">
-        <div class="modal-content">
-            <h2>Select Game Mode</h2>
-            <button id="onePlayerButton">1 Player</button>
-            <button id="twoPlayersButton">2 Players</button>
-        </div>
+      <div class="modal-content">
+        <h2>Select Game Mode</h2>
+        <button id="onePlayerButton">1 Player</button>
+        <button id="twoPlayersButton">2 Players</button>
+      </div>
     </div>
     <div id="themeModal" style="display: none;">
-        <div class="modal-content">
-            <h2>Select Game Mode</h2>
-            <button id="normalButton">Sunset</button>
-            <button id="seaButton">Sea</button>
-            <button id="westernButton">Western</button>
-        </div>
+      <div class="modal-content">
+        <h2>Select Game Mode</h2>
+        <button id="normalButton">Sunset</button>
+        <button id="seaButton">Sea</button>
+        <button id="westernButton">Western</button>
+      </div>
     </div>
 
     <div id="characterSelectionModal" style="display: none;">
-        <div class="modal-content">
-            <h2 id="modalTitle">Player 1, pick your character</h2>
-            <div id="characterGrid"></div>
-            <button id="confirmSelectionButton">OK</button>
-        </div>
+      <div class="modal-content">
+        <h2 id="modalTitle">Player 1, pick your character</h2>
+        <div id="characterGrid"></div>
+        <button id="confirmSelectionButton">OK</button>
+      </div>
     </div>
     <div id="resultsModal" style="display: none;">
-        <div class="modal-content">
-            <p id="modalTitleWin">Player X, You win!</p>
-            <img src="" id="winnerImage"></img>
-            <p id="scores"></p>
-            <div id="characterGrid"></div>
-            <button id="playAgain">PLAY AGAIN SAME CHARACTERS</button>
-            <button id="playDiffChar">MAIN MENU</button>
+      <div class="modal-content">
+        <p id="modalTitleWin">Player X, You win!</p>
+        <img src="" id="winnerImage"></img>
+        <p id="scores"></p>
+        <div id="characterGrid"></div>
+        <button id="playAgain">PLAY AGAIN SAME CHARACTERS</button>
+        <button id="playDiffChar">MAIN MENU</button>
 
-        </div>
+      </div>
     </div>
     <div id="pauseModal" style="display: none;">
-        <div class="modal-content">
-            <h2>Game Paused</h2>
-            <button id="resumeButton">Resume</button>
-            <!--<button id="restartButton">Restart</button>-->
-            <button id="instructionsButton">Instructions</button>
-            <button id="mainMenuButton">Main Menu</button>
-    
-        </div>
+      <div class="modal-content">
+        <h2>Game Paused</h2>
+        <button id="resumeButton">Resume</button>
+        <!--<button id="restartButton">Restart</button>-->
+        <button id="instructionsButton">Instructions</button>
+        <button id="mainMenuButton">Main Menu</button>
+
+      </div>
     </div>
     <div id="instructOrPlayModal" style="display: none;">
-        <div class="modal-content">
-            <button id="PlayButton">Play</button>
-            <button id="instructionsButtonBeforeGame">Instructions</button>
-    
-        </div>
+      <div class="modal-content">
+        <button id="PlayButton">Play</button>
+        <button id="instructionsButtonBeforeGame">Instructions</button>
+
+      </div>
     </div>
     <div id="musicModal" style="display: none;">
-        <div class="modal-content">
-            <h2>Music on or off?</h2>
-            <!--<button id="restartButton">Restart</button>-->
-            <button id="yes">On</button>
-            <button id="no">Off</button>
-    
-        </div>
+      <div class="modal-content">
+        <h2>Music on or off?</h2>
+        <!--<button id="restartButton">Restart</button>-->
+        <button id="yes">On</button>
+        <button id="no">Off</button>
+
+      </div>
     </div>
 
 
 
-    <div id="instructionsModal" class = "modal-content" style="display: none;">
-        
-        <div class="modal-header-instructions">
-            <button id="backButton" class="back-button">Back</button>
+    <div id="instructionsModal" class="modal-content" style="display: none;">
+
+      <div class="modal-header-instructions">
+        <button id="backButton" class="back-button">Back</button>
+      </div>
+      <h1>Instructions</h1>
+
+      <p id="intro">
+      <ul>
+        <li>Monster Bosh is a game of endurance. You must avoid the monsters and obstacles, and collect as many coins as possible.</li>
+        <li>The further you get, the higher your score!</li>
+        <li>The more coins you get, the higher your coin score!</li>
+        <li>If you are playing 2 player, the player who gets the most coins wins!</li>
+      </ul>
+      </p>
+
+      <!-- Monsters Section -->
+      <div class="category" id="monsters">
+        <h3>Monsters</h3>
+        <div class="icons">
+          <img src="icons/monsters/blue-monster.png" alt="Monster 1">
+          <img src="icons/monsters/fish.png" alt="Monster 2">
         </div>
-        <h1>Instructions</h1>
-
-        <p id="intro">
-            <ul>
-                <li>Monster Bosh is a game of endurance. You must avoid the monsters and obstacles, and collect as many coins as possible.</li>
-                <li>The further you get, the higher your score!</li>
-                <li>The more coins you get, the higher your coin score!</li>
-                <li>If you are playing 2 player, the player who gets the most coins wins!</li>
-            </ul>
-        </p>
-
-            <!-- Monsters Section -->
-            <div class="category" id="monsters">
-                <h3>Monsters</h3>
-                <div class="icons">
-                    <img src="icons/monsters/blue-monster.png" alt="Monster 1">
-                    <img src="icons/monsters/fish.png" alt="Monster 2">
-                </div>
-                <p class="description">Monsters appear throughout the game and challenge the player. Avoid them at all costs!</p>
-            </div>
-                        <!-- Enemies Section -->
-            <div class="category" id="enemies">
-                <h3>Obstacles</h3>
-                <div class="icons">
-                    <img src="icons/enemies/cactus.png" alt="Enemy 1">
-                    <img src="icons/enemies/enemy-icon.png" alt="Enemy 2">
-                </div>
-                <p class="description">Obstacles come in different forms and sizes. Avoid them to stay alive!</p>
-            </div>
-    
-    
-    
-    
-    
-    
-    
-    
-            
-            <!-- Invincibility Section -->
-            <div class="category" id="invincibility">
-                <h3>Invincibility</h3>
-                <div class="icons">
-                    <img src="icons/shields/cocktail.png" alt="Invincibility 1">
-    
-                </div>
-                <p class="description">Gain invincibility to withstand enemy attacks for a short time.</p>
-            </div>
-            
-            <!-- Coins Section -->
-            <div class="category" id="coins">
-                <h3>Coins</h3>
-                <div class="icons">
-                    <img src="coin-icon.png" alt="Coin 1">
-                    <img src="icons/coin/gold.png" alt="Coin 2">
-                    <img src="icons/coin/silver.png" alt="Coin 3">
-                </div>
-                <p class="description">Collect coins to increase your score!</p>
-            </div>
-
-                       <!-- Controls Section -->
-                       <div class="controls" id="controls">
-                        <h3>Controls</h3>
-            
-                        <h1>Space to pause</h1>
-                        <h1>For a first player</h1>
-                        <p class="description">W: up</p>
-                        <p class="description">A: left</p>
-                        <p class="description">D: right</p>
-                        <h1>For a second player</h1>
-                        <p class="description">upKey: up</p>
-                        <p class="description">leftKey: left</p>
-                        <p class="description">rightKey: right</p>
-        
-        
-        
-                    </div>
-            
-    
+        <p class="description">Monsters appear throughout the game and challenge the player. Avoid them at all costs!</p>
+      </div>
+      <!-- Enemies Section -->
+      <div class="category" id="enemies">
+        <h3>Obstacles</h3>
+        <div class="icons">
+          <img src="icons/enemies/cactus.png" alt="Enemy 1">
+          <img src="icons/enemies/enemy-icon.png" alt="Enemy 2">
         </div>
+        <p class="description">Obstacles come in different forms and sizes. Avoid them to stay alive!</p>
+      </div>
+
+
+
+
+
+
+
+
+
+      <!-- Invincibility Section -->
+      <div class="category" id="invincibility">
+        <h3>Invincibility</h3>
+        <div class="icons">
+          <img src="icons/shields/cocktail.png" alt="Invincibility 1">
+
+        </div>
+        <p class="description">Gain invincibility to withstand enemy attacks for a short time.</p>
+      </div>
+
+      <!-- Coins Section -->
+      <div class="category" id="coins">
+        <h3>Coins</h3>
+        <div class="icons">
+          <img src="coin-icon.png" alt="Coin 1">
+          <img src="icons/coin/gold.png" alt="Coin 2">
+          <img src="icons/coin/silver.png" alt="Coin 3">
+        </div>
+        <p class="description">Collect coins to increase your score!</p>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls" id="controls">
+        <h3>Controls</h3>
+
+        <h1>Space to pause</h1>
+        <h1>For a first player</h1>
+        <p class="description">W: up</p>
+        <p class="description">A: left</p>
+        <p class="description">D: right</p>
+        <h1>For a second player</h1>
+        <p class="description">upKey: up</p>
+        <p class="description">leftKey: left</p>
+        <p class="description">rightKey: right</p>
+
+
+
+      </div>
+
+
+    </div>
     </div>
 
-    
-    <div id="instructionsModalBeforeGame" class = "modal-content" style="display: none;">
-        
-        <div class="modal-header-instructions">
-            <button id="backButtonBeforeGame" class="back-button">Back</button>
+
+    <div id="instructionsModalBeforeGame" class="modal-content" style="display: none;">
+
+      <div class="modal-header-instructions">
+        <button id="backButtonBeforeGame" class="back-button">Back</button>
+      </div>
+
+
+      <!-- Monsters Section -->
+
+      <h1>Instructions</h1>
+
+      <p id="intro">
+      <ul>
+        <li>Monster Bosh is a game of endurance. You must avoid the monsters and obstacles, and collect as many coins as possible.</li>
+        <li>The further you get, the higher your score!</li>
+        <li>The more coins you get, the higher your coin score!</li>
+        <li>If you are playing 2 player, the player who gets the most coins wins!</li>
+      </ul>
+      </p>
+      <div class="category" id="monsters">
+        <h3>Monsters</h3>
+        <div class="icons">
+          <img src="icons/monsters/blue-monster.png" alt="Monster 1">
+          <img src="icons/monsters/fish.png" alt="Monster 2">
         </div>
-     
-    
-            <!-- Monsters Section -->
-          
-                <h1>Instructions</h1>
-    
-                <p id="intro">
-                    <ul>
-                        <li>Monster Bosh is a game of endurance. You must avoid the monsters and obstacles, and collect as many coins as possible.</li>
-                        <li>The further you get, the higher your score!</li>
-                        <li>The more coins you get, the higher your coin score!</li>
-                        <li>If you are playing 2 player, the player who gets the most coins wins!</li>
-                    </ul>
-                </p>
-                <div class="category" id="monsters">
-                <h3>Monsters</h3>
-                <div class="icons">
-                    <img src="icons/monsters/blue-monster.png" alt="Monster 1">
-                    <img src="icons/monsters/fish.png" alt="Monster 2">
-                </div>
-                <p class="description">Monsters appear throughout the game and challenge the player. Avoid them at all costs!</p>
-            </div>
-                        <!-- Enemies Section -->
-            <div class="category" id="enemies">
-                <h3>Obstacles</h3>
-                <div class="icons">
-                    <img src="icons/enemies/cactus.png" alt="Enemy 1">
-                    <img src="icons/enemies/enemy-icon.png" alt="Enemy 2">
-                </div>
-                <p class="description">Obstacles come in different forms and sizes. Avoid them to stay alive!</p>
-            </div>
-    
-    
-            <!-- Invincibility Section -->
-            <div class="category" id="invincibility">
-                <h3>Invincibility</h3>
-                <div class="icons">
-                    <img src="icons/shields/cocktail.png" alt="Invincibility 1">
-    
-                </div>
-                <p class="description">Gain invincibility to withstand enemy attacks for a short time.</p>
-            </div>
-            
-            <!-- Coins Section -->
-            <div class="category" id="coins">
-                <h3>Coins</h3>
-                <div class="icons">
-                    <img src="coin-icon.png" alt="Coin 1">
-                    <img src="icons/coin/gold.png" alt="Coin 2">
-                    <img src="icons/coin/silver.png" alt="Coin 3">
-                </div>
-                <p class="description">Collect coins to increase your score!</p>
-            </div>
-
-            <!-- Controls Section -->
-            <div class="controls" id="controls">
-                <h3>Controls</h3>
-                <h1>Space to pause</h1>
-                <h1>For a first player:</h1>
-                <p class="description">W: up</p>
-                <p class="description">A: left</p>
-                <p class="description">D: right</p>
-                <h1>For a second player:</h1>
-                <p class="description">upKey: up</p>
-                <p class="description">leftKey: left</p>
-                <p class="description">rightKey: right</p>
-
-
-
-            </div>
-            
-    
+        <p class="description">Monsters appear throughout the game and challenge the player. Avoid them at all costs!</p>
+      </div>
+      <!-- Enemies Section -->
+      <div class="category" id="enemies">
+        <h3>Obstacles</h3>
+        <div class="icons">
+          <img src="icons/enemies/cactus.png" alt="Enemy 1">
+          <img src="icons/enemies/enemy-icon.png" alt="Enemy 2">
         </div>
+        <p class="description">Obstacles come in different forms and sizes. Avoid them to stay alive!</p>
+      </div>
+
+
+      <!-- Invincibility Section -->
+      <div class="category" id="invincibility">
+        <h3>Invincibility</h3>
+        <div class="icons">
+          <img src="icons/shields/cocktail.png" alt="Invincibility 1">
+
+        </div>
+        <p class="description">Gain invincibility to withstand enemy attacks for a short time.</p>
+      </div>
+
+      <!-- Coins Section -->
+      <div class="category" id="coins">
+        <h3>Coins</h3>
+        <div class="icons">
+          <img src="coin-icon.png" alt="Coin 1">
+          <img src="icons/coin/gold.png" alt="Coin 2">
+          <img src="icons/coin/silver.png" alt="Coin 3">
+        </div>
+        <p class="description">Collect coins to increase your score!</p>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls" id="controls">
+        <h3>Controls</h3>
+        <h1>Space to pause</h1>
+        <h1>For a first player:</h1>
+        <p class="description">W: up</p>
+        <p class="description">A: left</p>
+        <p class="description">D: right</p>
+        <h1>For a second player:</h1>
+        <p class="description">upKey: up</p>
+        <p class="description">leftKey: left</p>
+        <p class="description">rightKey: right</p>
+
+
+
+      </div>
+
+
     </div>
-    
+    </div>
+
 
 
     <div id="gameOverContainer" style="display: none;">
-        <div id="gameOverMessage">GAME OVER!</div>
-        <img id="gameOverImage" src="characters/death.png" alt="Game Over Icon">
+      <div id="gameOverMessage">GAME OVER!</div>
+      <img id="gameOverImage" src="characters/death.png" alt="Game Over Icon">
     </div>
 
     <div id="lifeLostContainer" style="display: none;">
-        <div id="lifeLostMessage">Life Lost!</div>
-        <img id="lifeLostImage" src="" alt="Life Lost Icon">
+      <div id="lifeLostMessage">Life Lost!</div>
+      <img id="lifeLostImage" src="" alt="Life Lost Icon">
     </div>
     <div id="invincibleContainer" style="display: none;">
-        <div id="invincibleMessage">Invincibility</div>
-        <img id="invincibleImage" src="" alt="invincible Icon">
+      <div id="invincibleMessage">Invincibility</div>
+      <img id="invincibleImage" src="" alt="invincible Icon">
     </div>
     <div id="deadContainer" style="display: none;">
-        <div id="deadMessage">DEAD!</div>
-        <img id="deadImage" src="" alt="invincible Icon">
+      <div id="deadMessage">DEAD!</div>
+      <img id="deadImage" src="" alt="invincible Icon">
     </div>
 
-</Container>
+  </Container>
 
 
-<div id = "bottomInfo">
- 
+  <div id="bottomInfo">
+
     <p>Player 1: Use LEFT and RIGHT arrows to move, UP to fly</p>
 
     <p>Player 2: Use A and D keys to move, W to fly</p>
-    <p>Collect the coins and avoid the obstacles<p>
+    <p>Collect the coins and avoid the obstacles
+    <p>
     <p>You have 3 lives - Good Luck!</p>
-</div>
-    <script src= "script.js"></script>
-    <script src= "script2.js"></script>
-    <script src= "scriptIntro.js"></script>
+  </div>
+  <script src="script.js"></script>
+  <script src="script2.js"></script>
+  <script src="scriptIntro.js"></script>
 
 
 </body>
+
 </html>
